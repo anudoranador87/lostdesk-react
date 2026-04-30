@@ -2,7 +2,7 @@ import Header from './Header';
 import StatBar from './StatBar';
 import ItemCard from './ItemCard';
 import ItemForm from './ItemForm';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [items, setItems] = useState([
@@ -13,7 +13,22 @@ function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false)
 // esto es para que el formulario aparezca cerrado por defecto
 
-  function handleAddItem(nuevoItem) {
+
+useEffect(() => {
+  // 1. Cargamos desde localStorage al arrancar
+  const datos = localStorage.getItem('items')
+  if (datos) {
+    setItems(JSON.parse(datos)) // si esta vacio
+  }
+}, []) // solo al montar
+useEffect(() => {
+  // Vamos a guardar los cambios en el localStorage, cambia el array
+  localStorage.setItem('items', JSON.stringify(items))
+}, [items]) //vigila el array y dice...¿cambio? ejecuta lo de dentro
+  
+
+  
+function handleAddItem(nuevoItem) {
     setItems([...items, nuevoItem])
   }
 

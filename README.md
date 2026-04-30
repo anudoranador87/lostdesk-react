@@ -26,7 +26,7 @@ Este proyecto es un ejercicio real de aprendizaje. Cada fase añade una capa de 
 | ---- | ----------------------------------------- | ------------ |
 | 1    | Estructura visual — componentes estáticos | ⬜ Completado|
 | 2    | Formulario vivo — useState y re-render    | ⬜ Completado|
-| 3    | Memoria — useEffect + localStorage        | ⬜ Pendiente |
+| 3    | Memoria — useEffect + localStorage        | ⬜ Completado|
 | 4    | Orden interno — useReducer                | ⬜ Pendiente |
 | 5    | Roles — useContext                        | ⬜ Pendiente |
 | 6    | Lógica separada — Custom hook             | ⬜ Pendiente |
