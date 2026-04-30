@@ -24,8 +24,8 @@ Este proyecto es un ejercicio real de aprendizaje. Cada fase añade una capa de 
 
 | Fase | Contenido                                 | Estado       |
 | ---- | ----------------------------------------- | ------------ |
-| 1    | Estructura visual — componentes estáticos | ⬜ Pendiente |
-| 2    | Formulario vivo — useState y re-render    | ⬜ Pendiente |
+| 1    | Estructura visual — componentes estáticos | ⬜ Completado|
+| 2    | Formulario vivo — useState y re-render    | ⬜ Completado|
 | 3    | Memoria — useEffect + localStorage        | ⬜ Pendiente |
 | 4    | Orden interno — useReducer                | ⬜ Pendiente |
 | 5    | Roles — useContext                        | ⬜ Pendiente |
