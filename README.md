@@ -1,79 +1,118 @@
 # 🏨 LostDesk
 
-> Sistema de gestión de objetos perdidos para hoteles.
+> Sistema de gestión de objetos perdidos para hoteles
 
 ---
 
-## ¿Qué es LostDesk?
+## 📌 Qué es
 
-LostDesk es una aplicación web para que el staff de un hotel pueda registrar, buscar, actualizar y gestionar objetos perdidos por los huéspedes.
-
-Cada rol del hotel — Recepción, Housekeeping y Management — tiene acceso a la información que le corresponde.
+LostDesk es una aplicación web que centraliza la gestión de objetos perdidos en hoteles, conectando a recepción, housekeeping y management en un único flujo de trabajo.
 
 ---
 
-## Estado del proyecto
+## ⚠️ Problema real
 
-🚧 **En construcción** — migración progresiva de Vanilla JS a React.
+La gestión de objetos perdidos suele ser inconsistente:
 
-Este proyecto es un ejercicio real de aprendizaje. Cada fase añade una capa de complejidad sobre la anterior, siguiendo la progresión natural de React desde los fundamentos hasta el nivel avanzado.
+- Registros en papel o sistemas aislados
+- Falta de comunicación entre departamentos
+- Tiempo perdido buscando objetos
+- Sin historial claro de qué ocurrió
 
----
-
-## Hoja de ruta
-
-| Fase | Contenido                                 | Estado       |
-| ---- | ----------------------------------------- | ------------ |
-| 1    | Estructura visual — componentes estáticos | ⬜ Completado|
-| 2    | Formulario vivo — useState y re-render    | ⬜ Completado|
-| 3    | Memoria — useEffect + localStorage        | ⬜ Completado|
-| 4    | Orden interno — useReducer                | ⬜ Pendiente |
-| 5    | Roles — useContext                        | ⬜ Pendiente |
-| 6    | Lógica separada — Custom hook             | ⬜ Pendiente |
-| 7    | Navegación real — React Router            | ⬜ Pendiente |
-| 8    | Rendimiento — useMemo, useCallback, memo  | ⬜ Pendiente |
-| 9    | API real — Supabase + fotos de objetos    | ⬜ Pendiente |
-| 10   | Testing — Jest + React Testing Library    | ⬜ Pendiente |
+Esto genera mala experiencia para el huésped y fricción interna en el equipo.
 
 ---
 
-## Stack tecnológico
+## 💡 Qué aporta LostDesk
+
+LostDesk introduce un sistema simple pero estructurado:
+
+- Registro inmediato de objetos encontrados
+- Búsqueda rápida y filtrada
+- Actualización de estado por distintos roles
+- Historial completo de cada objeto
+- Fotografía del objeto adjunta al registro
+
+El objetivo es reducir el tiempo de localización y mejorar la trazabilidad.
+
+---
+
+## 🔄 Flujo real de uso
+
+1. Housekeeping encuentra un objeto y lo registra con foto
+2. El sistema lo guarda con ubicación, fecha y estado
+3. Recepción lo localiza cuando el cliente lo reclama
+4. Management puede auditar todo el proceso
+
+---
+
+## 👥 Roles del sistema
+
+| Rol | Permisos |
+|-----|----------|
+| Recepción | Consulta y registra objetos |
+| Housekeeping | Actualiza estados |
+| Management | Visión global e historial completo |
+
+---
+
+## 🛠️ Stack tecnológico
 
 - **React** con Vite
-- **React Router v6**
+- **React Router v6** — navegación por rutas
 - **Supabase** — base de datos, autenticación y almacenamiento de imágenes
 - **JavaScript** — base previa en Vanilla JS
-- **Jest + React Testing Library** — testing (Fase 10)
+- **Jest + React Testing Library** — testing
 
 ---
 
-## Roles de la aplicación
+## 🧠 Enfoque técnico
 
-- **Recepción** — registra y consulta objetos
-- **Housekeeping** — actualiza el estado de los objetos encontrados
-- **Management** — acceso completo e historial
+Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquitectura escalable en React:
+
+- Estado local → global
+- Lógica acoplada → desacoplada (custom hooks)
+- Persistencia local → backend real
+- UI estática → aplicación completa
+
+No es solo una migración, sino una reconstrucción con mejores prácticas aplicadas fase a fase.
 
 ---
 
-## Origen del proyecto
+## 🗺️ Roadmap de desarrollo
 
-LostDesk nació como una aplicación en Vanilla JS. Este repositorio documenta su migración completa a React, fase a fase, como proyecto de aprendizaje y portfolio.
+- ✅ Fase 1 — Componentes base y estructura visual
+- ✅ Fase 2 — Formularios dinámicos y modal
+- ✅ Fase 3 — Persistencia con localStorage y useEffect
+- 🚧 Fase 4 — Gestión avanzada de estado con useReducer
+- ⏳ Fase 5 — Contexto global y roles con useContext
+- ⏳ Fase 6 — Lógica desacoplada con custom hooks
+- ⏳ Fase 7 — Navegación completa con React Router
+- ⏳ Fase 8 — Optimización con useMemo y useCallback
+- ⏳ Fase 9 — Integración con Supabase y subida de imágenes
+- ⏳ Fase 10 — Testing con Jest y React Testing Library
 
 ---
 
-## Instalación
+## 🎯 Objetivo
 
-> Disponible cuando el proyecto esté en fase local (Fase 7+)
+Construir una aplicación funcional mientras se consolidan conceptos clave de React y arquitectura frontend, aplicados a un caso de uso real del sector hotelero.
+
+---
+
+## 📦 Instalación
+
+> Disponible a partir de la Fase 7 en entorno local
 
 ```bash
-git clone https://github.com/tuusuario/lostdesk.git
-cd lostdesk
+git clone https://github.com/tuusuario/lostdesk-react.git
+cd lostdesk-react
 npm install
 npm run dev
 ```
 
 ---
 
-## Autor
+## 👨‍💻 Autor
 
-Desarrollado como proyecto de aprendizaje progresivo de React.
+Proyecto desarrollado como evolución práctica desde Vanilla JS hacia React, enfocado en resolver un problema real con una base técnica sólida.
