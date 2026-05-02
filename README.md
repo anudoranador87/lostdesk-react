@@ -84,8 +84,8 @@ No es solo una migración, sino una reconstrucción con mejores prácticas aplic
 - ✅ Fase 1 — Componentes base y estructura visual
 - ✅ Fase 2 — Formularios dinámicos y modal
 - ✅ Fase 3 — Persistencia con localStorage y useEffect
-- 🚧 Fase 4 — Gestión avanzada de estado con useReducer
-- ⏳ Fase 5 — Contexto global y roles con useContext
+- ✅ Fase 4 — Gestión avanzada de estado con useReducer
+- 🚧 Fase 5 — Contexto global y roles con useContext
 - ⏳ Fase 6 — Lógica desacoplada con custom hooks
 - ⏳ Fase 7 — Navegación completa con React Router
 - ⏳ Fase 8 — Optimización con useMemo y useCallback
@@ -105,7 +105,7 @@ Construir una aplicación funcional mientras se consolidan conceptos clave de Re
 > Disponible a partir de la Fase 7 en entorno local
 
 ```bash
-git clone https://github.com/tuusuario/lostdesk-react.git
+git clone https://github.com/anudoranador87/lostdesk-react.git
 cd lostdesk-react
 npm install
 npm run dev
