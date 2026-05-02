@@ -85,8 +85,8 @@ No es solo una migración, sino una reconstrucción con mejores prácticas aplic
 - ✅ Fase 2 — Formularios dinámicos y modal
 - ✅ Fase 3 — Persistencia con localStorage y useEffect
 - ✅ Fase 4 — Gestión avanzada de estado con useReducer
-- 🚧 Fase 5 — Contexto global y roles con useContext
-- ⏳ Fase 6 — Lógica desacoplada con custom hooks
+- ✅ Fase 5 — Contexto global y roles con useContext
+- 🚧 Fase 6 — Lógica desacoplada con custom hooks
 - ⏳ Fase 7 — Navegación completa con React Router
 - ⏳ Fase 8 — Optimización con useMemo y useCallback
 - ⏳ Fase 9 — Integración con Supabase y subida de imágenes

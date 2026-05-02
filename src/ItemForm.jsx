@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import {RoleContext} from './RoleContext';
 
 function ItemForm(props) {
   const [nombre, setNombre] = useState("")
   const [hab, setHab] = useState("")
   const [date, setDate] = useState("")
   const [estado, setEstado] = useState("pendiente")
+  const { activo } = useContext(RoleContext)
 
   function handleSubmit(e){
     e.preventDefault() 
     const nuevoItem = { 
+        registradoPor: activo,
         id: Date.now(),
         nombre: nombre,
         habitacion: hab,

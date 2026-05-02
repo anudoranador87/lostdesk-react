@@ -11,6 +11,7 @@ function ItemCard(props){
         <p>Ubicacion: {props.habitacion} </p>
         <p>Estado: {props.estado} </p>
         <p> Fecha: {props.fecha} </p>
+        <p>Registrado por:{props.registradoPor} </p>
         <button onClick={props.onDelete}>Eliminar</button>
         <label htmlFor="estado">Estado</label>
         <select id="estado" value={estado} onChange={(e) => {
