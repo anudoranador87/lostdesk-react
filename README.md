@@ -114,5 +114,11 @@ npm run dev
 ---
 
 ## 👨‍💻 Autor
+👨‍💻 Autor
 
-Proyecto desarrollado como evolución práctica desde Vanilla JS hacia React, enfocado en resolver un problema real con una base técnica sólida.
+Jose María Aparicio
+Recepcionista de hotel en transición a frontend developer.
+42 días de código documentados en Dev Log 365.
+
+🌐 Portfolio → https://anudoranador87.github.io/JoseMaria-Frondtend-Portfolio/
+📓 Dev Log → https://anudoranador87.github.io/Mi-Camino-Web-365/
