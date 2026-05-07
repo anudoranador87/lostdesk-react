@@ -1,0 +1,36 @@
+ /* Estilo header */
+
+
+ .header-class {
+    display: flex;
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+  
+  .header h2 {
+    font-size: 1rem;
+    margin: 0.25rem 0 0.75rem;
+    color: #94a3b8;
+    font-weight: 400;
+  }
+  
+  .header .rol-badge {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }

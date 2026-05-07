@@ -1,16 +1,19 @@
 import { useContext } from 'react'
 import {RoleContext} from './RoleContext';
+import './Header.css';
+ 
 
 function Header() {
 
       const { activo } = useContext(RoleContext)
   return (
-  <div>
+<div className="header-class">
        
         <h1>Hotel Paraiso</h1>
   <h2>LostDesk</h2>
-  <p>Rol activo: {activo}</p>
-  </div>)
+  <span className="rol-badge">{activo}</span>
+  </div>
+  )
   }
   
   export default Header

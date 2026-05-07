@@ -1,0 +1,76 @@
+.cards-container{
+
+    display: flex;
+    flex-direction: column;
+}
+ 
+
+
+.item-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .item-card h3 {
+    min-width: 200px;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .item-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Color por estado */
+  .item-card.pendiente {
+    border-left-color: #f59e0b;
+    background-color: #fffbf0;
+  }
+  
+  .item-card.reclamado {
+    border-left-color: #3b82f6;
+    background-color: #f0f5ff;
+  }
+  
+  .item-card.entregado {
+    border-left-color: #10b981;
+    background-color: #f0fff4;
+  }
+  /* Color de los botones */
+  .btn-eliminar{
+    border-radius: 5px;
+    color: red ;
+    border: none;
+
+
+ }
+
+ .select-estado{
+    padding: 2px;
+    margin: 2px;
+    appearance: none
+ }
+
+ .pendiente{
+    text-transform: uppercase;
+    border-radius: 5px;
+ }
+
+ .reclamado{
+    text-transform: uppercase;
+    border-radius: 5px;
+ }
+
+ .entregado{
+    text-transform: uppercase;
+    border-radius: 5px;
+ }

@@ -5,6 +5,7 @@ import ItemForm from './ItemForm';
 import { useState, useEffect, useReducer } from 'react'
 import {RoleContext} from './RoleContext';
 import { useLostItems } from './useLostItems'
+import './itemCard.css';
 
 
 
@@ -16,13 +17,13 @@ function App() {
 
   <RoleContext.Provider value={{ activo, setActivo }}> 
     <div>
-      <Header />
       <button onClick={() => setActivo("recepcion")}>Recepcion</button> 
       <button onClick={() => setActivo("houseKeeping")}>House Keeping</button> 
       <button onClick={() => setActivo("management")}>Management</button> 
       <StatBar />
       <button onClick={() => setMostrarFormulario(true)}>Registrar objeto</button>
       {mostrarFormulario && <ItemForm onAddItem={handleAddItem} onClose={() => setMostrarFormulario(false)} />}
+  <div className="cards-container">
       {state.map(item => ( 
      <ItemCard key={item.id}  // key es propia de react, no componente
      id={item.id} // para que itemCard acceda 
@@ -37,6 +38,7 @@ function App() {
        payload: { id, estado }
      })} />
       ))}
+      </div>
     </div>
 
     </RoleContext.Provider>  
