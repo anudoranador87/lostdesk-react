@@ -1,0 +1,31 @@
+.stat-bar-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
+  }
+  
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  
+  .stat-card.total .stat-value { color: #3b82f6; }
+  .stat-card.pending .stat-value { color: #ef4444; }
+  .stat-card.claimed .stat-value { color: #10b981; }

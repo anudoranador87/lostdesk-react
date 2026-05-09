@@ -1,19 +1,23 @@
 import { useContext } from 'react'
-import {RoleContext} from './RoleContext';
+import { RoleContext } from './RoleContext';
 import './Header.css';
- 
 
-function Header() {
+function Header({ totalObjetos }) { 
+  const { activo } = useContext(RoleContext)
 
-      const { activo } = useContext(RoleContext)
   return (
-<div className="header-class">
+    <div className="header-class">
+      <h1>Hotel Paraíso</h1>
+      <div className="header-info">
+        <h2>LostDesk</h2>
        
-        <h1>Hotel Paraiso</h1>
-  <h2>LostDesk</h2>
-  <span className="rol-badge">{activo}</span>
-  </div>
+        <span className="count-badge">
+          {totalObjetos} {totalObjetos === 1 ? 'Objeto' : 'Objetos'} Registrados
+        </span>
+      </div>
+      <span className="rol-badge">{activo}</span>
+    </div>
   )
-  }
-  
-  export default Header
+}
+
+export default Header;

@@ -1,0 +1,105 @@
+/* 1. Fondo y Contenedor */
+.form-overlay {
+    position: fixed;
+    inset: 0; 
+    background: rgba(15, 23, 42, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px); 
+  }
+  
+  .form-card {
+    background: white;
+    width: 95%;
+    max-width: 450px;
+    border-radius: 16px; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .form-header {
+    background: #811713;
+    color: white;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .form-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+
+  .form-content {
+    padding: 32px;
+  }
+  
+  .input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  
+  .input-box label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #811713;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-left: 4px;
+  }
+  
+  .input-box input, 
+  .input-box select {
+    padding: 14px;
+    border: 2px solid #f1f5f9; 
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: all 0.25s ease;
+  }
+
+  .input-box input:focus, 
+  .input-box select:focus {
+    outline: none;
+    border-color: #811713;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(129, 23, 19, 0.15);
+    transform: scale(1.01); 
+  }
+  
+  /* 4. Botón de Enviar */
+  .submit-form-btn {
+    background: #811713;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(129, 23, 19, 0.3);
+  }
+  
+  .submit-form-btn:hover {
+    background: #5a0f0d;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px -5px rgba(129, 23, 19, 0.4);
+  }

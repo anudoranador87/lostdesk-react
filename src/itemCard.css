@@ -1,76 +1,98 @@
-.cards-container{
-
-    display: flex;
-    flex-direction: column;
-}
- 
-
-
+/* Contenedor principal */
 .item-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem;
-    margin-bottom: 0.75rem;
-    border-left: 4px solid #ccc;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-  }
-  
-  .item-card h3 {
-    min-width: 200px;
-    font-size: 1rem;
-    margin: 0;
-  }
-  
-  .item-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  /* Color por estado */
-  .item-card.pendiente {
-    border-left-color: #f59e0b;
-    background-color: #fffbf0;
-  }
-  
-  .item-card.reclamado {
-    border-left-color: #3b82f6;
-    background-color: #f0f5ff;
-  }
-  
-  .item-card.entregado {
-    border-left-color: #10b981;
-    background-color: #f0fff4;
-  }
-  /* Color de los botones */
-  .btn-eliminar{
-    border-radius: 5px;
-    color: red ;
-    border: none;
+  display: flex;
+  flex-direction: row; /* Nombre y Recuadro en línea */
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+/* Colores de fondo por estado */
+.item-card.pendiente { background-color: #fffbeb; border-left: 8px solid #f59e0b; }
+.item-card.reclamado { background-color: #eff6ff; border-left: 8px solid #3b82f6; }
+.item-card.entregado { background-color: #f0fdf4; border-left: 8px solid #10b981; }
+
+.card-name {
+  width: 140px;
+  min-width: 140px;
+}
+
+.card-name h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #811713;
+  text-transform: uppercase;
+}
 
 
- }
+.card-white-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  gap: 10px; 
+}
 
- .select-estado{
-    padding: 2px;
-    margin: 2px;
-    appearance: none
- }
+.card-white-row p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #334155;
+  white-space: nowrap; 
+}
 
- .pendiente{
-    text-transform: uppercase;
-    border-radius: 5px;
- }
+.card-white-row p strong {
+  color: #94a3b8;
+  font-weight: 800;
+  margin-right: 4px;
+}
 
- .reclamado{
-    text-transform: uppercase;
-    border-radius: 5px;
- }
+/* Controles al final de la fila */
+.card-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
- .entregado{
-    text-transform: uppercase;
-    border-radius: 5px;
- }
+.card-controls select {
+  padding: 4px;
+  font-size: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+.input-box textarea {
+  padding: 12px;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #f8fafc;
+  resize: none; /* Evita que el usuario deforme el formulario */
+  transition: all 0.25s ease;
+}
+
+.input-box textarea:focus {
+  outline: none;
+  border-color: #811713;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(129, 23, 19, 0.15);
+}

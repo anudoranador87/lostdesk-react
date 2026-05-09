@@ -1,0 +1,55 @@
+/* --- BOTONES DE ROL (Pestañas) --- */
+.role-selector-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0; /* Pegados como pestañas */
+    margin: 20px 0;
+  }
+  
+  .btn-role {
+    padding: 12px 25px;
+    border: 1px solid #ddd;
+    background-color: #f8fafc;
+    color: #64748b;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+  
+  /* El ternario activa esta clase */
+  .btn-role.active {
+    background-color: #811713 !important; /* Rojo Vino */
+    color: white !important;
+    border-color: #811713 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    z-index: 10;
+  }
+  
+  /* --- BOTÓN REGISTRAR (El feo) --- */
+  .action-bar {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+  }
+  
+  .btn-register-main {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    color: white !important;
+    padding: 14px 30px !important;
+    border: none !important;
+    border-radius: 50px !important; /* Redondeado */
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-register-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    filter: brightness(1.2);
+  }

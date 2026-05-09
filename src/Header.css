@@ -1,36 +1,55 @@
- /* Estilo header */
+.header-class {
+  background-color: #811713; 
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
+.header-class h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif; 
+  color: #ffffff; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 
- .header-class {
-    display: flex;
-    background-color: #1e293b;
-    color: #f8fafc;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-  
-  .header h1 {
-    font-size: 2rem;
-    margin: 0;
-    letter-spacing: 0.05em;
-  }
-  
-  .header h2 {
-    font-size: 1rem;
-    margin: 0.25rem 0 0.75rem;
-    color: #94a3b8;
-    font-weight: 400;
-  }
-  
-  .header .rol-badge {
-    display: inline-block;
-    background-color: #3b82f6;
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
+.header-info {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.header-info h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8); 
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.count-badge {
+  background-color: #f59e0b; 
+  color: #ffffff; 
+  padding: 4px 15px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.rol-badge {
+  background: rgba(255, 255, 255, 0.1); 
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
