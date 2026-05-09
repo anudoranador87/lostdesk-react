@@ -1,10 +1,12 @@
 import{useEffect, useReducer} from "react"
 const estadoInicial = [
     {id: 1, nombre: "Paraguas azul", habitacion: "105", estado: "pendiente", fecha: "21/04/2026", registradoPor:"recepcion"},
-    {id: 2, nombre: "Gafas de sol", habitacion: "202", estado: "Reclamado", fecha: "20/01/2026", registradoPor:"recepcion"},
+    {id: 2, nombre: "Gafas de sol", habitacion: "202", estado: "reclamado", fecha: "20/01/2026", registradoPor:"recepcion"},
     {id: 3, nombre: "Manta termica", habitacion: "101", estado: "entregado", fecha: "29/04/2026", registradoPor:"recepcion"}
   ]
-  
+  function Init(){
+    return localStorage.getItem('items')   ? JSON.parse( localStorage.getItem('items')) :  estadoInicial
+    }
   function reducer(state, action) {
     switch(action.type) {
       case "ADD_ITEM":
@@ -26,15 +28,12 @@ const estadoInicial = [
 
 //1 vamos a crear un hook reutilizable con toda la logica
 export function useLostItems(){
-    const [state, dispatch] = useReducer(reducer, estadoInicial)
-    // solo este, porque lo demas solo manejan el UI
-    useEffect(() => {
-        // 1. Cargamos desde localStorage al arrancar
-        const datos = localStorage.getItem('items')
-        if (datos) {
-          dispatch({ type: "LOAD_ITEMS", payload: JSON.parse(datos) }) 
-        }
-      }, [])
+    const [state, dispatch] = useReducer(reducer, estadoInicial, Init)
+
+
+
+
+
     
       useEffect(() => {
         // 2. Guardamos en localStorage cuando cambia el array

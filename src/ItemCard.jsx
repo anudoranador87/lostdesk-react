@@ -1,8 +1,9 @@
 import { useState } from "react"
 import './itemCard.css';
 
+
 function ItemCard(props) {
-  const [estado, setEstado] = useState(props.estado)
+
 
   const coloresTexto = {
     pendiente: "#f59e0b",
@@ -12,12 +13,11 @@ function ItemCard(props) {
 
   const handleEstadoChange = (e) => {
     const nuevoEstado = e.target.value;
-    setEstado(nuevoEstado);
-    props.onUpdate(props.id, nuevoEstado);
+      props.onUpdate(props.id, nuevoEstado);
   };
 
   return (
-    <section className={`item-card ${estado}`}>
+    <section className={`item-card ${props.estado}`}>
     
       <div className="card-name">
         <h3>{props.nombre}</h3>
@@ -29,8 +29,8 @@ function ItemCard(props) {
         
         <p>
           <strong>ESTADO:</strong> 
-          <span style={{ color: coloresTexto[estado], fontWeight: 'bold' }}>
-            {estado.toUpperCase()}
+          <span style={{ color: coloresTexto[props.estado], fontWeight: 'bold' }}>
+            {props.estado.toUpperCase()}
           </span>
         </p>
 
@@ -43,7 +43,7 @@ function ItemCard(props) {
           </span>
 </div>
         <div className="card-controls">
-          <select value={estado} onChange={handleEstadoChange}>
+          <select value={props.estado} onChange={handleEstadoChange}>
             <option value="pendiente">Pendiente</option>
             <option value="reclamado">Reclamado</option>
             <option value="entregado">Entregado</option>
