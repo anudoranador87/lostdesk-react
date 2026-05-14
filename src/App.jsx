@@ -3,32 +3,27 @@ import Header from './Header';
 import StatBar from './StatBar';
 import ItemCard from './ItemCard';
 import ItemForm from './ItemForm';
-import { RoleContext } from './RoleContext';
 import { useLostItems } from './useLostItems';
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Login from "./Login"
+
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
-  const [activo, setActivo] = useState("recepcion");
   
   // Aquí obtenemos el 'state', que es la lista de objetos
   const { state, dispatch, handleAddItem } = useLostItems();
 
   return (
-    <RoleContext.Provider value={{ activo, setActivo }}> 
+    <Routes>
+<Route path="/login" element={<Login />} />
+<Route path="/" element={   
       <div className="main-app-container">
         
         {/* PASAMOS LA LONGITUD DEL ARRAY AL HEADER */}
-        <Header totalObjetos={state.length} />
-
-        <div className="role-selector-bar">
-          <button className={`btn-role ${activo === "recepcion" ? "active" : ""}`} onClick={() => setActivo("recepcion")}>Recepción</button> 
-          <button className={`btn-role ${activo === "houseKeeping" ? "active" : ""}`} onClick={() => setActivo("houseKeeping")}>House Keeping</button> 
-          <button className={`btn-role ${activo === "management" ? "active" : ""}`} onClick={() => setActivo("management")}>Management</button> 
-        </div>
-
-        <StatBar items={state} />
-
+       <Header totalObjetos={state.length} />
+       <StatBar items={state} />
         <div className="action-bar">
           <button className="btn-register-main" onClick={() => setMostrarFormulario(true)}>
             <span className="icon">+</span> Registrar Nuevo Objeto
@@ -58,8 +53,10 @@ function App() {
           ))}
         </div>
       </div>
-    </RoleContext.Provider>  
+      } />
+     </Routes>
   );
+
 }
 
 export default App;
