@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Header from './Header';
 import StatBar from './StatBar';
 import ItemCard from './ItemCard';
@@ -14,6 +14,10 @@ function App() {
   
   // Aquí obtenemos el 'state', que es la lista de objetos
   const { state, dispatch, handleAddItem } = useLostItems();
+  // voy a declarar aqui un callBack para usar use memo y no reenderizar siempre lo mismo
+  const handleDelete = useCallback((id) => {
+    dispatch({ type: "DELETE_ITEM", payload: id })
+  }, [dispatch])
 
   return (
     <Routes>
@@ -44,7 +48,7 @@ function App() {
               estado={item.estado}
               fecha={item.fecha}
               registradoPor={item.registradoPor}
-              onDelete={() => dispatch({ type: "DELETE_ITEM", payload: item.id })}
+              onDelete={() => handleDelete(item.id)}
               onUpdate={(id, nuevoEstado) => dispatch({
                 type: "UPDATE_STATUS",
                 payload: { id, estado: nuevoEstado }

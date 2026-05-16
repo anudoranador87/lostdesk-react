@@ -1,5 +1,6 @@
 import { useState } from "react"
 import './itemCard.css';
+import React from 'react'
 
 
 function ItemCard(props) {
@@ -56,4 +57,5 @@ function ItemCard(props) {
   )
 }
 
-export default ItemCard;
+
+export default React.memo(ItemCard)
