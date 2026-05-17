@@ -13,7 +13,7 @@ function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   
   // Aquí obtenemos el 'state', que es la lista de objetos
-  const { state, dispatch, handleAddItem } = useLostItems();
+  const { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado } = useLostItems();
   // voy a declarar aqui un callBack para usar use memo y no reenderizar siempre lo mismo
   const handleDelete = useCallback((id) => {
     dispatch({ type: "DELETE_ITEM", payload: id })
@@ -48,11 +48,8 @@ function App() {
               estado={item.estado}
               fecha={item.fecha}
               registradoPor={item.registradoPor}
-              onDelete={() => handleDelete(item.id)}
-              onUpdate={(id, nuevoEstado) => dispatch({
-                type: "UPDATE_STATUS",
-                payload: { id, estado: nuevoEstado }
-              })} 
+              onDelete={() => handleDeleteItem(item.id)}
+              onUpdate={(id, nuevoEstado) => handleNuevoEstado(id, nuevoEstado)} 
             />
           ))}
         </div>
