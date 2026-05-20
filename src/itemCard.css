@@ -1,18 +1,21 @@
-/* Contenedor principal */
 .item-card {
   display: flex;
-  flex-direction: row; /* Nombre y Recuadro en línea */
+  flex-direction: row;
   align-items: center;
   margin-bottom: 12px;
   padding: 10px 15px;
   border-radius: 8px;
+  background-color: #0f1c35;
   transition: 0.3s;
 }
 
-/* Colores de fondo por estado */
-.item-card.pendiente { background-color: #fffbeb; border-left: 8px solid #f59e0b; }
-.item-card.reclamado { background-color: #eff6ff; border-left: 8px solid #3b82f6; }
-.item-card.entregado { background-color: #f0fdf4; border-left: 8px solid #10b981; }
+.item-card:hover {
+  background-color: #1e3a5f;
+}
+
+.item-card.pendiente { border-left: 8px solid #c9a84c; }
+.item-card.reclamado { border-left: 8px solid #3b82f6; }
+.item-card.entregado { border-left: 8px solid #10b981; }
 
 .card-name {
   width: 140px;
@@ -22,37 +25,36 @@
 .card-name h3 {
   margin: 0;
   font-size: 0.85rem;
-  color: #811713;
+  color: #c9a84c;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
-
 
 .card-white-row {
   flex: 1;
   display: flex;
-  flex-direction: row; 
-  justify-content: space-between; 
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  background: white;
+  background: rgba(255,255,255,0.05);
   padding: 12px 20px;
   border-radius: 6px;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .card-white-row p {
   margin: 0;
   font-size: 0.75rem;
-  color: #334155;
-  white-space: nowrap; 
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
 }
 
 .card-white-row p strong {
-  color: #94a3b8;
-  font-weight: 800;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
   margin-right: 4px;
 }
 
-/* Controles al final de la fila */
 .card-controls {
   display: flex;
   align-items: center;
@@ -60,19 +62,22 @@
 }
 
 .card-controls select {
-  padding: 4px;
+  padding: 4px 8px;
   font-size: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: white;
 }
 
 .delete-btn {
   background: none;
   border: none;
-  color: #ccc;
+  color: rgba(255,255,255,0.3);
   font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
+  transition: color 0.2s;
 }
 
 .delete-btn:hover {
@@ -86,13 +91,13 @@
   font-size: 0.9rem;
   font-family: inherit;
   background: #f8fafc;
-  resize: none; /* Evita que el usuario deforme el formulario */
+  resize: none;
   transition: all 0.25s ease;
 }
 
 .input-box textarea:focus {
   outline: none;
-  border-color: #811713;
+  border-color: #c9a84c;
   background: white;
-  box-shadow: 0 0 0 4px rgba(129, 23, 19, 0.15);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
 }

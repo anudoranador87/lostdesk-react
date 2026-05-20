@@ -24,16 +24,33 @@
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
-
+  .form-header h2 {
+    color: white;
+    text-align: center;
+    flex: 1;
+  }
   .form-header {
-    background: #811713;
+    background: #1a2744;
     color: white;
     padding: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  .close-x-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
   
+  .close-x-btn:hover {
+    background: rgba(255,255,255,0.2);
+  }
   .form-header h2 {
     margin: 0;
     font-size: 1.2rem;
@@ -56,7 +73,7 @@
   .input-box label {
     font-size: 0.75rem;
     font-weight: 800;
-    color: #811713;
+    color: #c9a84c;
     text-transform: uppercase;
     margin-bottom: 10px;
     margin-left: 4px;
@@ -76,7 +93,7 @@
   .input-box input:focus, 
   .input-box select:focus {
     outline: none;
-    border-color: #811713;
+    border-color: #c9a84c;
     background: white;
     box-shadow: 0 0 0 4px rgba(129, 23, 19, 0.15);
     transform: scale(1.01); 
@@ -84,7 +101,7 @@
   
   /* 4. Botón de Enviar */
   .submit-form-btn {
-    background: #811713;
+    background: #c9a84c;
     color: white;
     border: none;
     padding: 16px;
@@ -99,7 +116,7 @@
   }
   
   .submit-form-btn:hover {
-    background: #5a0f0d;
+    background: #c9a84c;
     transform: translateY(-2px);
     box-shadow: 0 15px 20px -5px rgba(129, 23, 19, 0.4);
   }
