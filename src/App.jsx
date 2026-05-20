@@ -7,13 +7,14 @@ import { useLostItems } from './useLostItems';
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import Login from "./Login"
+import { Spinner } from "./Spinner"
 
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   
   // Aquí obtenemos el 'state', que es la lista de objetos
-  const { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado } = useLostItems();
+  const { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado, spinner  } = useLostItems();
   // voy a declarar aqui un callBack para usar use memo y no reenderizar siempre lo mismo
   const handleDelete = useCallback((id) => {
     dispatch({ type: "DELETE_ITEM", payload: id })
@@ -23,6 +24,8 @@ function App() {
     <Routes>
 <Route path="/login" element={<Login />} />
 <Route path="/" element={   
+<>
+{spinner && <Spinner />}
       <div className="main-app-container">
         
         {/* PASAMOS LA LONGITUD DEL ARRAY AL HEADER */}
@@ -54,6 +57,7 @@ function App() {
           ))}
         </div>
       </div>
+      </>
       } />
      </Routes>
   );

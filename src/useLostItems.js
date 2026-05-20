@@ -1,4 +1,4 @@
-import{useEffect, useReducer} from "react"
+import{useEffect, useReducer, useState} from "react"
 import { supabase } from './supabase'
 const estadoInicial = [
     {id: 1, nombre: "Paraguas azul", habitacion: "105", estado: "pendiente", fecha: "21/04/2026", registradoPor:"recepcion"},
@@ -31,7 +31,7 @@ const estadoInicial = [
 //1 vamos a crear un hook reutilizable con toda la logica
 export function useLostItems(){
     const [state, dispatch] = useReducer(reducer, estadoInicial)
-
+    const[spinner, setSpinner] = useState(true)
     useEffect(() => {
       async function cargarItems() {
         try {
@@ -45,6 +45,9 @@ export function useLostItems(){
           }
         } catch (err) {
           console.error(err);
+        }
+        finally{
+          setSpinner(false)
         }
       } 
       cargarItems();
@@ -98,6 +101,6 @@ export function useLostItems(){
     }
   }
 
-return { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado }
+return { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado, spinner }
 
   }
