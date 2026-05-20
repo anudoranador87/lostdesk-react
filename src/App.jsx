@@ -6,8 +6,10 @@ import ItemForm from './ItemForm';
 import { useLostItems } from './useLostItems';
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import Login from "./Login"
 import { Spinner } from "./Spinner"
+import ProtectedRoute from "./ProtectedRoute"
 
 
 function App() {
@@ -23,7 +25,9 @@ function App() {
   return (
     <Routes>
 <Route path="/login" element={<Login />} />
-<Route path="/" element={   
+
+  <Route path="/" element={   
+ <ProtectedRoute>
 <>
 {spinner && <Spinner />}
       <div className="main-app-container">
@@ -58,7 +62,9 @@ function App() {
         </div>
       </div>
       </>
+       </ProtectedRoute>
       } />
+      
      </Routes>
   );
 

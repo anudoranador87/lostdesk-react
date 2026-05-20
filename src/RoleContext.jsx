@@ -1,37 +1,54 @@
 
 import {createContext, useState} from "react"
+import { supabase } from './supabase'
+import { useNavigate } from 'react-router-dom'
 export const RoleContext = createContext("")
 export function RoleProvider({ children }) {
 
 
-//tenemos que crear dentro una funcion login y meter toda la logica dentro
-// tenemos que  definir los estados de rol y pin. primero rol
-
-const[rol, setRol] = useState(null) // por defecto 
 
 
-const pins ={ recepcion: 1234,                           
-              housekeeping: 2233,
-              management: 1844 }
-
-function login(pin, rol){  
-if( pin === pins[rol])   { return setRol(rol)} else{ return alert( "Pin incorrecto")}
+const[rol, setRol] = useState(null)
+const navigate = useNavigate() 
 
 
-}
 
-
-function logout(){
-  setRol(null)
-}
-
-
+   async function login(email, password){
+    console.log("login llamado", email, password)
+                try{
+                   const{data, error} = await supabase.auth.signInWithPassword({ email, password })
+              
+                    if(error){
+                  console.log(error);
+              
+              
+                       }
+                          else{
+                            const roles = {
+                              'recepcion@lostdesk.com': 'recepcion',
+                              'housekeeping@lostdesk.com': 'housekeeping',
+                              'management@lostdesk.com': 'management'
+                            }
+                            console.log("rol asignado", roles[data.user.email])
+                            setRol(roles[data.user.email])
+                            navigate('/') 
+                  }
+                   }
+                       catch(err){
+                   console.log(err)
+              }
+              }
+              function logout(){
+                setRol(null)
+              }   
+ 
 return (
     <RoleContext.Provider value={{rol, login, logout}}>
       {children}
+      
     </RoleContext.Provider>
   )
-
-
 }
+
+
 
