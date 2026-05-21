@@ -87,10 +87,10 @@ No es solo una migración, sino una reconstrucción con mejores prácticas aplic
 - ✅ Fase 4 — Gestión avanzada de estado con useReducer
 - ✅ Fase 5 — Contexto global y roles con useContext
 - ✅ Fase 6 — Lógica desacoplada con custom hooks
--  7 — Navegación completa con React Router
+- ✅ Fase 7— Navegación completa con React Router
 - ✅ Fase 8 — Optimización con useMemo y useCallback
-- 🚧 Fase — Integración con Supabase y subida de imágenes
-- ⏳ Fase 10 — Testing con Jest y React Testing Library
+- ✅ Fase 9 — Integración con Supabase y subida de imágenes
+- 🚧 Fase 10 — Testing con Jest y React Testing Library
 
 ---
 

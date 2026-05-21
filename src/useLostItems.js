@@ -51,7 +51,7 @@ export function useLostItems(){
     async  function handleAddItem(nuevoItem){
       console.log(nuevoItem)
       try {
-        const { data, error } = await supabase.from('objetos').insert(nuevoItem)
+        const { data, error } = await supabase.from('objetos').insert(nuevoItem).select()
         
         if (error) {
           console.error(error);

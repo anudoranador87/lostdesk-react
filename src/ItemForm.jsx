@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { RoleContext } from './RoleContext';
 import './ItemForm.css';
+import { supabase } from './supabase'
 
 function ItemForm(props) {
   const [nombre, setNombre] = useState("");
@@ -9,17 +10,25 @@ function ItemForm(props) {
   const [estado, setEstado] = useState("pendiente");
   const [comentario, setComentario] = useState(""); 
   const { rol } = useContext(RoleContext);
-
-  const handleSubmit = (e) => {
+  const [foto, setFoto] = useState(null)
+  
+const handleSubmit = async (e) => {
     e.preventDefault();
+    //antes de agregar el itemm hay que subir la foto
+   const nombreArchivo = `${Date.now()}_${foto.name}`
+   await supabase.storage.from('fotos-objetos').upload(nombreArchivo, foto)
+   const { data: urlData } = supabase.storage.from('fotos-objetos').getPublicUrl(nombreArchivo)
     const nuevoItem = { 
       registrado_por: rol,
        nombre: nombre,
       habitacion: hab, 
       estado: estado,
       fecha: date,
-      comentario: comentario 
+      comentario: comentario,
+      foto_url: urlData.publicUrl
     };
+   
+
     props.onAddItem(nuevoItem);
     props.onClose();
   };
@@ -80,6 +89,10 @@ function ItemForm(props) {
                 <option value="reclamado">Reclamado</option>
                 <option value="entregado">Entregado</option>
               </select>
+              <div className="input-box">
+                <label>Foto del objeto</label>
+                <input type="file" accept="image/*" onChange={(e) => setFoto(e.target.files[0])} />
+</div>
             </div>
           </div>
 
