@@ -1,10 +1,5 @@
 import{useEffect, useReducer, useState} from "react"
 import { supabase } from './supabase'
-const estadoInicial = [
-    {id: 1, nombre: "Paraguas azul", habitacion: "105", estado: "pendiente", fecha: "21/04/2026", registradoPor:"recepcion"},
-    {id: 2, nombre: "Gafas de sol", habitacion: "202", estado: "reclamado", fecha: "20/01/2026", registradoPor:"recepcion"},
-    {id: 3, nombre: "Manta termica", habitacion: "101", estado: "entregado", fecha: "29/04/2026", registradoPor:"recepcion"}
-  ]
 
   
 
@@ -30,7 +25,7 @@ const estadoInicial = [
 
 //1 vamos a crear un hook reutilizable con toda la logica
 export function useLostItems(){
-    const [state, dispatch] = useReducer(reducer, estadoInicial)
+    const [state, dispatch] = useReducer(reducer, [])
     const[spinner, setSpinner] = useState(true)
     useEffect(() => {
       async function cargarItems() {
@@ -54,6 +49,7 @@ export function useLostItems(){
     }, []); // El array vacío está perfecto para que solo se ejecute al montar el componente
        
     async  function handleAddItem(nuevoItem){
+      console.log(nuevoItem)
       try {
         const { data, error } = await supabase.from('objetos').insert(nuevoItem)
         
@@ -61,7 +57,7 @@ export function useLostItems(){
           console.error(error);
           
         } else {
-          dispatch({ type: "ADD_ITEM", payload: data });
+          dispatch({ type: "ADD_ITEM", payload: data[0] })
           console.log(data)
           
         }

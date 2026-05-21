@@ -10,11 +10,12 @@ import { Navigate } from 'react-router-dom'
 import Login from "./Login"
 import { Spinner } from "./Spinner"
 import ProtectedRoute from "./ProtectedRoute"
-
+import {useContext} from "react"
+import { RoleContext } from './RoleContext';
 
 function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
-  
+  const { rol } = useContext(RoleContext)
   // Aquí obtenemos el 'state', que es la lista de objetos
   const { state, dispatch, handleAddItem, handleDeleteItem, handleNuevoEstado, spinner  } = useLostItems();
   // voy a declarar aqui un callBack para usar use memo y no reenderizar siempre lo mismo
@@ -36,9 +37,9 @@ function App() {
        <Header totalObjetos={state.length} />
        <StatBar items={state} />
         <div className="action-bar">
-          <button className="btn-register-main" onClick={() => setMostrarFormulario(true)}>
+        {(rol === "management" || rol === "recepcion") && <button className="btn-register-main" onClick={() => setMostrarFormulario(true)}>
             <span className="icon">+</span> Registrar Nuevo Objeto
-          </button>
+          </button>}
         </div>
 
         {mostrarFormulario && (

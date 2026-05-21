@@ -1,10 +1,10 @@
 import { useState } from "react"
 import './itemCard.css';
 import React from 'react'
-
-
+import {useContext} from "react"
+import { RoleContext } from './RoleContext';
 function ItemCard(props) {
-
+  const { rol } = useContext(RoleContext)
 
   const coloresTexto = {
     pendiente: "#f59e0b",
@@ -37,7 +37,7 @@ function ItemCard(props) {
 
         <p><strong>FECHA:</strong> {props.fecha}</p>
         
-        <p><strong>POR:</strong> {props.registradoPor}</p>
+        {rol === "management" && <p><strong>POR:</strong> {props.registradoPor}</p>}
         <div className="info-group">
         <span style={{ color: '#64748b', fontStyle: 'italic' }}>
             {props.comentario && props.comentario.trim() !== "" ? props.comentario : "Sin notas"}
@@ -50,7 +50,7 @@ function ItemCard(props) {
             <option value="entregado">Entregado</option>
           </select>
           
-          <button className="delete-btn" onClick={props.onDelete}>✕</button>
+          {rol === "management" && <button className="delete-btn" onClick={props.onDelete}>✕</button>}
         </div>
       </div>
     </section>

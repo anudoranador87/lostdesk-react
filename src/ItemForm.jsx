@@ -8,14 +8,13 @@ function ItemForm(props) {
   const [date, setDate] = useState("");
   const [estado, setEstado] = useState("pendiente");
   const [comentario, setComentario] = useState(""); 
-  const { activo } = useContext(RoleContext);
+  const { rol } = useContext(RoleContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const nuevoItem = { 
-      registradoPor: activo,
-      id: Date.now(),
-      nombre: nombre,
+      registrado_por: rol,
+       nombre: nombre,
       habitacion: hab, 
       estado: estado,
       fecha: date,
