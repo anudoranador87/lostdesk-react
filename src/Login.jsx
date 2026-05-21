@@ -7,7 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const { login } = useContext(RoleContext)
-
+  const [errorMsg, setErrorMsg] = useState(null)
   return (
   <div className="login-screen">
    

@@ -55,7 +55,7 @@ function App() {
               habitacion={item.habitacion}
               estado={item.estado}
               fecha={item.fecha}
-              registradoPor={item.registradoPor}
+              registradoPor={item.registrado_por}
               onDelete={() => handleDeleteItem(item.id)}
               onUpdate={(id, nuevoEstado) => handleNuevoEstado(id, nuevoEstado)} 
             />
