@@ -1,55 +1,140 @@
-/* --- BOTONES DE ROL (Pestañas) --- */
+/* =========================
+   BASE 
+========================= */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: #1a2744;
+  height: 100vh;
+
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+.sidebar h2 {
+  color: #ffffff;
+}
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+.main {
+  flex: 1;
+  padding: 20px;
+
+  height: 100vh;
+  overflow-y: auto;
+
+  background-color: #f8fafc;
+}
+
+/* =========================
+   BOTONES DE ROL
+========================= */
+
 .role-selector-bar {
-    display: flex;
-    justify-content: center;
-    gap: 0; /* Pegados como pestañas */
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 20px 0;
+}
+
+.btn-role {
+  padding: 12px 25px;
+  border: 1px solid #ddd;
+  background-color: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-role.active {
+  background-color: #811713 !important;
+  color: white !important;
+  border-color: #811713 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+/* =========================
+   BOTÓN REGISTRAR OBJETO
+========================= */
+
+.action-bar {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.btn-register-main {
+  background: #c9a84c;
+  color: white !important;
+  padding: 14px 30px !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-register-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  filter: brightness(1.2);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .layout {
+    flex-direction: column;
   }
-  
-  .btn-role {
-    padding: 12px 25px;
-    border: 1px solid #ddd;
-    background-color: #f8fafc;
-    color: #64748b;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin: 0;
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
   }
-  
-  /* El ternario activa esta clase */
-  .btn-role.active {
-    background-color: #811713 !important; /* Rojo Vino */
-    color: white !important;
-    border-color: #811713 !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transform: translateY(-2px);
-    z-index: 10;
+
+  .main {
+    height: auto;
   }
-  
-  /* --- BOTÓN REGISTRAR (El feo) --- */
-  .action-bar {
-    display: flex;
-    justify-content: center;
-    margin: 25px 0;
-  }
-  
+
   .btn-register-main {
-    background: #c9a84c;
-    color: white !important;
-    padding: 14px 30px !important;
-    border: none !important;
-    border-radius: 50px !important; /* Redondeado */
-    font-weight: bold !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    width: 100%;
+    padding: 12px 20px !important;
+    font-size: 0.85rem;
   }
-  
-  .btn-register-main:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    filter: brightness(1.2);
-  }
+}

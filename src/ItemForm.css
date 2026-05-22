@@ -120,3 +120,20 @@
     transform: translateY(-2px);
     box-shadow: 0 15px 20px -5px rgba(129, 23, 19, 0.4);
   }
+
+  @media (max-width: 768px) {
+    .form-card {
+      width: 100%;
+      border-radius: 0;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+  
+    .form-content {
+      padding: 16px;
+    }
+  
+    .form-header {
+      padding: 16px;
+    }
+  }

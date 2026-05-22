@@ -4,11 +4,11 @@ import './Header.css';
 import Logo from './Logo'
 import { supabase } from './supabase'
 function Header({ totalObjetos }) { 
-  const { activo } = useContext(RoleContext)
+  const { rol, logOut } = useContext(RoleContext)
 
   return (
     <>
-    <button>Logout</button>
+    
     <div className="header-class">
     <Logo />
       <h1>The Palace Hotel</h1>
@@ -19,8 +19,11 @@ function Header({ totalObjetos }) {
           {totalObjetos} {totalObjetos === 1 ? 'Objeto' : 'Objetos'} Registrados
         </span>
       </div>
-      <span className="rol-badge">{activo}</span>
+      <span className={`rol-badge rol-${rol}`}>{rol}</span>
     </div>
+    <button className="logout-btn" onClick={logOut}>
+      Logout
+    </button>
     </>)
 }
 

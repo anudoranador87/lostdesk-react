@@ -5,7 +5,8 @@ import {useContext} from "react"
 
 function ProtectedRoute({children}){
     
-    const { rol } = useContext(RoleContext)
+    const { rol, cargando } = useContext(RoleContext)
+    if(cargando) return null
     return rol ? children : <Navigate to="/login" />
 
 }

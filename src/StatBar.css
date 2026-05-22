@@ -3,8 +3,8 @@
     justify-content: center;
     gap: 2rem;
     padding: 1.5rem;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
+    background-color: #0f1c35;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     width: 100%;
   }
   
@@ -17,7 +17,7 @@
   
   .stat-label {
     font-size: 0.85rem;
-    color: #64748b;
+    color: rgba(255,255,255,0.6);
     text-transform: uppercase;
   }
   
@@ -29,3 +29,13 @@
   .stat-card.total .stat-value { color: #3b82f6; }
   .stat-card.pending .stat-value { color: #ef4444; }
   .stat-card.claimed .stat-value { color: #10b981; }
+
+
+  @media (max-width: 768px) {
+    .stat-bar-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
