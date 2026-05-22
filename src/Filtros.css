@@ -1,0 +1,77 @@
+/* =========================
+   CONTENEDOR FILTROS
+========================= */
+
+.filtros-container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    margin: 20px 0;
+    padding: 16px;
+  
+    background: #1a2744;
+    border-radius: 12px;
+  
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* =========================
+     INPUTS Y SELECT
+  ========================= */
+  
+  .filtros-container input,
+  .filtros-container select {
+    flex: 1;
+    min-width: 180px;
+  
+    padding: 12px 14px;
+  
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+  
+    background: #0f1c35;
+    color: rgba(255,255,255,0.9);
+  
+    font-size: 0.9rem;
+  
+    transition: all 0.2s ease;
+  }
+  
+  
+  .filtros-container input::placeholder {
+    color: rgba(255,255,255,0.4);
+  }
+  
+
+  .filtros-container input:focus,
+  .filtros-container select:focus {
+    outline: none;
+  
+    border-color: #c9a84c;
+  
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+  }
+  
+  /* select opciones */
+  .filtros-container option {
+    background: #0f1c35;
+    color: white;
+  }
+  
+  /* =========================
+     RESPONSIVE
+  ========================= */
+  
+  @media (max-width: 768px) {
+    .filtros-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .filtros-container input,
+    .filtros-container select {
+      width: 100%;
+    }
+  }

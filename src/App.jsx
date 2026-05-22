@@ -8,7 +8,7 @@ import StatBar from './StatBar';
 import ItemCard from './ItemCard';
 import ItemForm from './ItemForm';
 import Sidebar from './Sidebar';
-
+import Filtros from './Filtros'; 
 import Login from './Login';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -22,8 +22,10 @@ import './App.css';
 function App() {
 
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
-
   const { rol } = useContext(RoleContext);
+  const[filtroEstado, setFiltroEstado] = useState(null)
+const[filtroNombre, setFiltroNombre] = useState("")
+const[filtroHabitacion, setFiltroHabitacion] = useState("")
 
   const {
     state,
@@ -81,7 +83,14 @@ function App() {
                       onClose={() => setMostrarFormulario(false)}
                     />
                   )}
-
+                  <Filtros
+                    filtroEstado={filtroEstado}
+                    setFiltroEstado={setFiltroEstado}
+                   filtroNombre={filtroNombre}
+                   setFiltroNombre={setFiltroNombre}
+                    filtroHabitacion={filtroHabitacion}
+                  setFiltroHabitacion={setFiltroHabitacion}
+/>
                   <div className="cards-container">
                     {state.map(item => (
                       <ItemCard

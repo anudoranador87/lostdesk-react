@@ -15,7 +15,7 @@ function Sidebar() {
     {
       label: "Registrar Objeto",
       path: "/registrar",
-      roles: ["recepcion", "housekeeping"]
+      roles: ["recepcion", "management"]
     },
     {
       label: "Inventario",

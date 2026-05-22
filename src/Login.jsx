@@ -8,6 +8,11 @@ export default function Login() {
   const [password, setPassword] = useState(null)
   const { login } = useContext(RoleContext)
   const [errorMsg, setErrorMsg] = useState(null)
+  
+  // voy a definir una funcion handleLogin para manejo de errores
+
+  
+  
   return (
   <div className="login-screen">
    

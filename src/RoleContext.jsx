@@ -23,11 +23,9 @@ const roles = {
                 try{
                    const{data, error} = await supabase.auth.signInWithPassword({ email, password })
               
-                    if(error){
-                  console.log(error);
-              
-              
-                       }
+                   if(error) {
+                    return error
+                  }
                           else{
                           
                             console.log("rol asignado", roles[data.user.email])
@@ -36,7 +34,7 @@ const roles = {
                               }
                              }
                        catch(err){
-                   console.log(err)
+                   return err
               }
               }
              
@@ -60,7 +58,7 @@ const roles = {
    
       }
   catch(err){
-  console.log(err)
+  return err
 }
 
 finally{
@@ -77,9 +75,9 @@ finally{
 async function  logOut(){
   try{
     const{ error } = await supabase.auth.signOut()
-        if(error){
-                 console.log(error);
-     }
+    if(error) {
+      return error
+    }
       else{
         setRol(null)
         navigate('/login')  	
@@ -87,7 +85,7 @@ async function  logOut(){
 
     }
    catch(error){
-    console.log(error)
+    return error
    }}
 return (
     <RoleContext.Provider value={{rol, login, logOut, cargando}}>
