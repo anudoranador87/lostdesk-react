@@ -1,139 +1,136 @@
-/* 1. Fondo y Contenedor */
+/* =========================
+   OVERLAY
+========================= */
 .form-overlay {
-    position: fixed;
-    inset: 0; 
-    background: rgba(15, 23, 42, 0.8); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    backdrop-filter: blur(4px); 
-  }
-  
-  .form-card {
-    background: white;
-    width: 95%;
-    max-width: 450px;
-    border-radius: 16px; 
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .form-header h2 {
-    color: white;
-    text-align: center;
-    flex: 1;
-  }
-  .form-header {
-    background: #1a2744;
-    color: white;
-    padding: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .close-x-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-  
-  .close-x-btn:hover {
-    background: rgba(255,255,255,0.2);
-  }
-  .form-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
 
-  .form-content {
-    padding: 32px;
-  }
-  
-  .input-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 24px;
-  }
-  
-  .input-box label {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #c9a84c;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    margin-left: 4px;
-  }
-  
-  .input-box input, 
-  .input-box select {
-    padding: 14px;
-    border: 2px solid #f1f5f9; 
-    border-radius: 12px;
-    font-size: 1rem;
-    color: #1e293b;
-    background: #f8fafc;
-    transition: all 0.25s ease;
-  }
+/* =========================
+   CARD COMPACTA
+========================= */
+.form-card {
+  width: 92%;
+  max-width: 360px;
 
-  .input-box input:focus, 
-  .input-box select:focus {
-    outline: none;
-    border-color: #c9a84c;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(129, 23, 19, 0.15);
-    transform: scale(1.01); 
-  }
-  
-  /* 4. Botón de Enviar */
-  .submit-form-btn {
-    background: #c9a84c;
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 15px -3px rgba(129, 23, 19, 0.3);
-  }
-  
-  .submit-form-btn:hover {
-    background: #c9a84c;
-    transform: translateY(-2px);
-    box-shadow: 0 15px 20px -5px rgba(129, 23, 19, 0.4);
-  }
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 
-  @media (max-width: 768px) {
-    .form-card {
-      width: 100%;
-      border-radius: 0;
-      max-height: 100vh;
-      overflow-y: auto;
-    }
-  
-    .form-content {
-      padding: 16px;
-    }
-  
-    .form-header {
-      padding: 16px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 12px;
+}
+
+/* =========================
+   HEADER
+========================= */
+.form-header {
+  background: #0f172a;
+  color: white;
+
+  padding: 10px 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+
+/* BOTÓN X */
+.close-x-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* =========================
+   CONTENIDO (SIN SCROLL)
+========================= */
+.form-content {
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================
+   ROWS PARA AHORRAR ESPACIO
+========================= */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================
+   INPUTS COMPACTOS
+========================= */
+.input-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.input-box label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #c9a84c;
+  margin-bottom: 4px;
+}
+
+.input-box input,
+.input-box select,
+.input-box textarea {
+  padding: 8px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #f8fafc;
+}
+
+/* focus */
+.input-box input:focus,
+.input-box select:focus,
+.input-box textarea:focus {
+  outline: none;
+  border-color: #c9a84c;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.2);
+  background: white;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+.submit-form-btn {
+  width: 100%;
+  padding: 10px;
+
+  background: #c9a84c;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  font-weight: 700;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}

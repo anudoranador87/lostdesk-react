@@ -1,81 +1,113 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useContext,
+  useMemo
+} from "react";
 
-import { Routes, Route } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import Header from './Header';
-import StatBar from './StatBar';
-import ItemCard from './ItemCard';
-import ItemForm from './ItemForm';
-import Sidebar from './Sidebar';
-import Filtros from './Filtros'; 
-import Login from './Login';
-import ProtectedRoute from './ProtectedRoute';
+import Header from "./Header";
+import StatBar from "./StatBar";
+import ItemCard from "./ItemCard";
+import ItemForm from "./ItemForm";
+import Sidebar from "./Sidebar";
+import Filtros from "./Filtros";
+import Login from "./Login";
+import ProtectedRoute from "./ProtectedRoute";
 
-import { useLostItems } from './useLostItems';
-import { RoleContext } from './RoleContext';
+import { useLostItems } from "./useLostItems";
+import { RoleContext } from "./RoleContext";
+import { Spinner } from "./Spinner";
 
-import { Spinner } from './Spinner';
-
-import './App.css';
+import "./App.css";
 
 function App() {
 
+  // ---------------- ESTADOS ----------------
+
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+  const [filtroEstado, setFiltroEstado] = useState("");
+  const [filtroNombre, setFiltroNombre] = useState("");
+  const [filtroHabitacion, setFiltroHabitacion] = useState("");
+
+  // ---------------- CONTEXT ----------------
+
   const { rol } = useContext(RoleContext);
-  const[filtroEstado, setFiltroEstado] = useState(null)
-const[filtroNombre, setFiltroNombre] = useState("")
-const[filtroHabitacion, setFiltroHabitacion] = useState("")
+
+  // ---------------- HOOK ----------------
 
   const {
     state,
-    dispatch,
     handleAddItem,
     handleDeleteItem,
     handleNuevoEstado,
     spinner
   } = useLostItems();
 
-  const handleDelete = useCallback((id) => {
-    dispatch({ type: "DELETE_ITEM", payload: id });
-  }, [dispatch]);
+  // ---------------- FILTROS ----------------
+
+  const itemsFiltrados = useMemo(() => {
+    return state.filter((item) => {
+
+      const coincideNombre =
+        filtroNombre === "" ||
+        item.nombre.toLowerCase().includes(filtroNombre.toLowerCase());
+
+      const coincideHabitacion =
+        filtroHabitacion === "" ||
+        item.habitacion.toLowerCase().includes(filtroHabitacion.toLowerCase());
+
+      const coincideEstado =
+        filtroEstado === "" ||
+        item.estado === filtroEstado;
+
+      return (
+        coincideNombre &&
+        coincideHabitacion &&
+        coincideEstado
+      );
+    });
+  }, [state, filtroNombre, filtroHabitacion, filtroEstado]);
+
+  // ---------------- RENDER ----------------
 
   return (
     <Routes>
 
-      {/* LOGIN */}
       <Route path="/login" element={<Login />} />
 
-      {/* APP PROTEGIDA */}
       <Route
         path="/"
         element={
           <ProtectedRoute>
+
             <>
               {spinner && <Spinner />}
 
               <div className="layout">
 
-                {/* SIDEBAR */}
                 <Sidebar />
 
-                {/* CONTENIDO PRINCIPAL */}
                 <div className="main">
 
                   <Header totalObjetos={state.length} />
 
                   <StatBar items={state} />
 
-                  <div className="action-bar">
-                    {(rol === "management" || rol === "recepcion") && (
+                  {(rol === "management" || rol === "recepcion") && (
+                    <div className="action-bar">
                       <button
                         className="btn-register-main"
                         onClick={() => setMostrarFormulario(true)}
                       >
-                        <span className="icon">+</span> Registrar Nuevo Objeto
+                        <span className="icon">+</span>
+                        {" "}
+                        Registrar Nuevo Objeto
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   {mostrarFormulario && (
                     <ItemForm
@@ -83,35 +115,33 @@ const[filtroHabitacion, setFiltroHabitacion] = useState("")
                       onClose={() => setMostrarFormulario(false)}
                     />
                   )}
+
                   <Filtros
                     filtroEstado={filtroEstado}
                     setFiltroEstado={setFiltroEstado}
-                   filtroNombre={filtroNombre}
-                   setFiltroNombre={setFiltroNombre}
+                    filtroNombre={filtroNombre}
+                    setFiltroNombre={setFiltroNombre}
                     filtroHabitacion={filtroHabitacion}
-                  setFiltroHabitacion={setFiltroHabitacion}
-/>
+                    setFiltroHabitacion={setFiltroHabitacion}
+                  />
+
                   <div className="cards-container">
-                    {state.map(item => (
+
+                    {itemsFiltrados.map((item) => (
                       <ItemCard
                         key={item.id}
-                        id={item.id}
-                        nombre={item.nombre}
-                        habitacion={item.habitacion}
-                        estado={item.estado}
-                        fecha={item.fecha}
-                        registradoPor={item.registrado_por}
+                        {...item}
                         onDelete={() => handleDeleteItem(item.id)}
-                        onUpdate={(id, nuevoEstado) =>
-                          handleNuevoEstado(id, nuevoEstado)
-                        }
+                        onUpdate={handleNuevoEstado}
                       />
                     ))}
+
                   </div>
 
                 </div>
               </div>
             </>
+
           </ProtectedRoute>
         }
       />
