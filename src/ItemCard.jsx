@@ -14,7 +14,7 @@ function ItemCard(props) {
 
   const handleEstadoChange = (e) => {
     const nuevoEstado = e.target.value;
-      props.onUpdate(props.id, nuevoEstado);
+      props.onUpdate(props.id, nuevoEstado, props);
   };
 
   return (

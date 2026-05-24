@@ -58,14 +58,24 @@ export function useLostItems(){
           
         } else {
           dispatch({ type: "ADD_ITEM", payload: data[0] })
-          console.log(data)
+          const history = { nombre_objeto: data[0].nombre,
+            habitacion: data[0].habitacion,
+            rol: data[0].registrado_por,
+            accion: "registrado",
+            estado_nuevo: data[0].estado,
+           
+       }
+
+
+
+await supabase.from('historial').insert(history)
           
         }
       } catch (err) {
         console.error(err);
       }
     } 
-    async function  handleDeleteItem(id){  // recibira un id para borrar
+    async function  handleDeleteItem(id, item){  // recibira un id para borrar
     try {
       const { data, error } = await supabase.from('objetos').delete().eq('id', id)  //borrara el id si es igual y coinciden
       
@@ -74,14 +84,23 @@ export function useLostItems(){
         
       } else {
         dispatch({ type: "DELETE_ITEM", payload: id }); // en el payload, devuelve el id
-        console.log(data)
+        const history = { nombre_objeto: item.nombre,
+          habitacion: item.habitacion,
+          rol: item.registrado_por,
+           accion: "eliminado",
+           estado_nuevo: item.estado,
+
+}
+console.log("insertando en historial", history)
+
+await supabase.from('historial').insert(history)
         
       }
     } catch (err) {
       console.error(err);
     }
   } 
-  async function  handleNuevoEstado(id, nuevoEstado) {
+  async function  handleNuevoEstado(id, nuevoEstado, item) {
     try {
       const { data, error } = await supabase.from('objetos').update({ estado: nuevoEstado }).eq('id', id)  //mira el id, y cambia a nuevo estado
       if (error) {
@@ -89,7 +108,14 @@ export function useLostItems(){
 
       } else {
         dispatch({ type: "UPDATE_STATUS", payload: { id, estado: nuevoEstado } }); // en el payload, devuelve el id y el nuevo estado
-        console.log(data)
+        const history = { nombre_objeto: item.nombre,
+          habitacion: item.habitacion,
+          rol: item.registrado_por,
+           accion: "estado cambiado",
+           estado_nuevo: nuevoEstado,
+
+}
+await supabase.from('historial').insert(history)
 
       }
     } catch (err) {

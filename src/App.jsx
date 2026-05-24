@@ -131,7 +131,7 @@ function App() {
                       <ItemCard
                         key={item.id}
                         {...item}
-                        onDelete={() => handleDeleteItem(item.id)}
+                        onDelete={() => handleDeleteItem(item.id, item)}
                         onUpdate={handleNuevoEstado}
                       />
                     ))}

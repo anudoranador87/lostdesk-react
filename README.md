@@ -99,24 +99,25 @@ Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquite
 - ✅ Fase 5 — Contexto global y roles con useContext
 - ✅ Fase 6 — Lógica desacoplada con custom hooks
 - ✅ Fase 7 — Navegación con React Router
-- ✅ Fase 8 — Optimización con useMemo, useCallback y React.memo
-- ✅ Fase 9 — Supabase — CRUD completo, Auth con roles, Storage de imágenes
-- ✅ Deploy — Producción en Vercel
+- ✅ Fase 8 — Optimización con useMemo, useCallback y React.memo -
+- ✅Fase 9 — Supabase — CRUD completo, Auth con roles, Storage de imágenes
+- ✅Deploy — Producción en Vercel
+- ✅Historial en Supabase — registro automático de    acciones: registrado, estado cambiado, eliminado
 
 **En desarrollo 🚧**
 
-- 🚧 Fase 10 — Completar integración Supabase
-  - Logout con supabase.auth.signOut()
-  - Manejo de errores visible al usuario
-  - Fotos verificadas en entorno local
-  - Responsive para móvil
+- ✅ Fase 10 — Completar integración Supabase
+- ✅Logout con supabase.auth.signOut()
+- 🚧  Manejo de errores visible al usuario
+- 🚧 Fotos verificadas en entorno local
+- ✅ Responsive para móvil
 
-- 🚧 Fase 11 — Filtros y búsqueda
-  - Filtro por estado — pendiente, reclamado, entregado
-  - Filtro por fecha — rango de fechas
-  - Filtro por habitación
-  - Búsqueda por nombre de objeto
-  - useMemo para optimizar el filtrado
+- ✅ Fase 11 — Filtros y búsqueda
+- ✅Filtro por estado — pendiente, reclamado, entregado
+- 🚧Filtro por fecha — rango de fechas
+- ✅ Filtro por habitación
+- ✅Búsqueda por nombre de objeto
+- ✅useMemo para optimizar el filtrado
 
 - 🚧 Fase 12 — Dashboard de management
   - Gráfica de objetos por estado con Recharts

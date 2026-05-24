@@ -13,9 +13,9 @@ function Sidebar() {
       roles: ["recepcion", "housekeeping", "management"]
     },
     {
-      label: "Registrar Objeto",
-      path: "/registrar",
-      roles: ["recepcion", "management"]
+      label: "Panel",
+      path: "//Panel",
+      roles: ["management"]
     },
     {
       label: "Inventario",
