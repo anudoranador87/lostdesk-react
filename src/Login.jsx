@@ -9,10 +9,17 @@ export default function Login() {
   const { login } = useContext(RoleContext)
   const [errorMsg, setErrorMsg] = useState(null)
   
-  // voy a definir una funcion handleLogin para manejo de errores
-
-  
-  
+  // voy a definir una funcion handleLogin para manejo de errores durante login
+  //si hay resultado, hay error, llamamos a setErrorMsg
+  async function handleLogin() {
+    const resultado = await login(email, password);
+    
+    if (resultado) {
+      // Si 'resultado' existe, es que 'login' nos tiró el error.
+      // Guardamos ese mensaje de error en el estado setErrorMsg
+      setErrorMsg(resultado.message || "Usuario o contraseña incorrectos");
+    }
+  }
   return (
   <div className="login-screen">
    
@@ -20,7 +27,17 @@ export default function Login() {
     <form>
           <input type="email" className="input-form" placeholder="email@email.com" onChange={(e)=> setEmail(e.target.value)} />
           <input type="password" required className="input-form" placeholder="1234..." onChange={(e)=>setPassword(e.target.value)} />
-          <button type="submit" onClick={(e) => { e.preventDefault(); login(email, password) }}>Confirmar</button>
+          <button 
+              type="submit" 
+              onClick={(e) => { 
+              e.preventDefault(); 
+              handleLogin(); 
+    
+             }}
+          >
+         Confirmar
+          </button>
+          {errorMsg && <p className="Errores">{errorMsg}</p>}
           <div className="demo-credentials">
            <p>Credenciales de prueba:</p>
            <p>recepcion@lostdesk.com / Recepcion123</p>

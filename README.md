@@ -108,7 +108,7 @@ Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquite
 
 - ✅ Fase 10 — Completar integración Supabase
 - ✅Logout con supabase.auth.signOut()
-- 🚧  Manejo de errores visible al usuario
+- ✅  Manejo de errores visible al usuario
 - 🚧 Fotos verificadas en entorno local
 - ✅ Responsive para móvil
 
