@@ -20,7 +20,7 @@ import { useLostItems } from "./useLostItems";
 import { RoleContext } from "./RoleContext";
 import { Spinner } from "./Spinner";
 
-import "./App.css";
+
 
 function App() {
 
