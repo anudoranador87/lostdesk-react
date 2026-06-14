@@ -1,17 +1,17 @@
 import { useState, useContext } from "react"
 import './itemCard.css';
-import ModalReclamado from './ModalReclamado'; 
+import ModalReclamado from './ModalReclamado';
 import React from 'react'
 import { RoleContext } from './RoleContext';
+import { ToastContext } from './ToastContext';
+import { useIntersectionObserver } from './useIntersectionObserver';
 
 function ItemCard(props) {
   const { rol } = useContext(RoleContext)
+  const { addToast } = useContext(ToastContext)
   const [estaReclamado, setEstaReclamado] = useState(false)
-  const coloresTexto = {
-    pendiente: "#f59e0b",
-    reclamado: "#3b82f6",
-    entregado: "#10b981"
-  }
+  const [ref, isVisible] = useIntersectionObserver();
+  const estados = ["pendiente", "reclamado", "entregado"];
 
   const itemData = {
     nombre: props.nombre,
@@ -19,12 +19,17 @@ function ItemCard(props) {
     registradoPor: props.registradoPor
   };
 
-  const handleEstadoChange = (e) => {
-    const nuevoEstado = e.target.value;
+  const handleEstadoChange = (nuevoEstado) => {
     if(nuevoEstado === "reclamado"){
       setEstaReclamado(true)
-    } else { 
+    } else {
       props.onUpdate(props.id, nuevoEstado, itemData);
+      const mensajes = {
+        pendiente: "Estado cambiado a Pendiente",
+        reclamado: "Objeto marcado como Reclamado",
+        entregado: "Objeto entregado exitosamente"
+      };
+      addToast(mensajes[nuevoEstado], "success", 2000);
     }
   };
 
@@ -32,55 +37,40 @@ function ItemCard(props) {
     alert(`Simulando envío de email a: ${props.email_cliente || 'No asignado'}`);
   };
 
+  if (!isVisible) {
+    return <div ref={ref} className="item-card-skeleton" />;
+  }
+
   return (
-    <section className={`item-card ${props.estado}`}>
+    <section ref={ref} className={`item-card ${props.estado}`}>
       <div className="card-name">
         <h3>{props.nombre}</h3>
       </div>
 
       <div className="card-white-row">
         <p><strong>UBICACIÓN:</strong> {props.habitacion}</p>
-        
+
         <p>
-          <strong>ESTADO:</strong> 
-          <span style={{ color: coloresTexto[props.estado], fontWeight: 'bold' }}>
+          <strong>ESTADO:</strong>
+          <span className={`estado-text ${props.estado}`}>
             {props.estado.toUpperCase()}
           </span>
         </p>
 
         <p><strong>FECHA:</strong> {props.fecha}</p>
-        
+
         {rol === "management" && <p><strong>POR:</strong> {props.registradoPor}</p>}
-        
+
         {props.estado === "reclamado" && (
-          <div className="datos-reclamacion" style={{
-            backgroundColor: '#eff6ff',
-            borderLeft: '4px solid #3b82f6',
-            padding: '10px',
-            borderRadius: '4px',
-            margin: '10px 0',
-            fontSize: '0.9rem'
-          }}>
-            <p style={{ margin: '2px 0' }}><strong>Reclamado por:</strong> {props.reclamado_por || "No especificado"}</p>
-            {props.booking_cliente && <p style={{ margin: '2px 0' }}><strong>Reserva:</strong> {props.booking_cliente}</p>}
+          <div className="datos-reclamacion">
+            <p><strong>Reclamado por:</strong> {props.reclamado_por || "No especificado"}</p>
+            {props.booking_cliente && <p><strong>Reserva:</strong> {props.booking_cliente}</p>}
             {props.email_cliente && (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '6px', gap: '10px', flexWrap: 'wrap' }}>
-                <span style={{ wordBreak: 'break-all' }}><strong>Email:</strong> {props.email_cliente}</span>
-                <button 
+              <div className="reclamacion-email-row">
+                <span><strong>Email:</strong> {props.email_cliente}</span>
+                <button
                   onClick={handleEnviarEmail}
-                  style={{
-                    backgroundColor: '#3b82f6',
-                    color: '#ffffff',
-                    border: 'none',
-                    padding: '4px 10px',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    fontSize: '0.8rem',
-                    fontWeight: '600',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                  }}
+                  className="btn-send-email"
                 >
                   ✉️ Enviar Email
                 </button>
@@ -90,29 +80,37 @@ function ItemCard(props) {
         )}
 
         <div className="info-group">
-          <span style={{ color: '#64748b', fontStyle: 'italic' }}>
+          <span>
             {props.comentario && props.comentario.trim() !== "" ? props.comentario : "Sin notas"}
           </span>
         </div>
 
         <div className="card-controls">
-          <select value={props.estado} onChange={handleEstadoChange}>
-            <option value="pendiente">Pendiente</option>
-            <option value="reclamado">Reclamado</option>
-            <option value="entregado">Entregado</option>
-          </select>
-          
-          {rol === "management" && <button className="delete-btn" onClick={props.onDelete}>✕</button>}
+          <div className="estado-buttons">
+            {estados.map(estado => (
+              <button
+                key={estado}
+                className={`estado-btn ${estado} ${props.estado === estado ? 'active' : ''}`}
+                onClick={() => handleEstadoChange(estado)}
+                aria-label={`Cambiar estado a ${estado}`}
+                aria-pressed={props.estado === estado}
+              >
+                {estado.charAt(0).toUpperCase() + estado.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          {rol === "management" && <button className="delete-btn" onClick={props.onDelete} aria-label="Eliminar objeto">✕</button>}
         </div>
       </div>
 
       {estaReclamado && (
-        <ModalReclamado 
-          id={props.id} 
-          setEstaReclamado={setEstaReclamado} 
+        <ModalReclamado
+          id={props.id}
+          setEstaReclamado={setEstaReclamado}
           onUpdate={(id, estado, camposDelModal) => {
             props.onUpdate(id, estado, itemData, camposDelModal);
-          }} 
+          }}
         />
       )}
     </section>

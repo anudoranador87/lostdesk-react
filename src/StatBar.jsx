@@ -34,7 +34,7 @@ function StatBar({ items }) {
       {/* He añadido entregados por si quieres tener el cuadro completo */}
       <div className="stat-card delivered">
         <span className="stat-label">Entregados</span>
-        <span className="stat-value">{stats.spanentregados}</span>
+        <span className="stat-value">{stats.entregados}</span>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function Sidebar() {
     },
     {
       label: "Panel",
-      path: "//Panel",
+      path: "/panel",
       roles: ["management"]
     },
     {

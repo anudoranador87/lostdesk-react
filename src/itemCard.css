@@ -139,3 +139,187 @@
   color: #94a3b8;
   font-style: italic;
 }
+
+/* =========================
+   FILA BLANCA
+========================= */
+
+.card-white-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-white-row p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   INFO DE RECLAMACIÓN
+========================= */
+
+.datos-reclamacion {
+  background-color: #eff6ff !important;
+  border-left: 4px solid #3b82f6 !important;
+  padding: 10px !important;
+  border-radius: 4px !important;
+  margin: 10px 0 !important;
+  font-size: 0.9rem !important;
+}
+
+.datos-reclamacion p {
+  margin: 2px 0 !important;
+  color: #1e293b !important;
+}
+
+.datos-reclamacion strong {
+  color: #1e293b !important;
+}
+
+.reclamacion-email-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reclamacion-email-row span {
+  word-break: break-all;
+  color: #1e293b !important;
+}
+
+/* =========================
+   BOTÓN EMAIL
+========================= */
+
+.btn-send-email {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.btn-send-email:hover {
+  background-color: #2563eb !important;
+}
+
+/* =========================
+   GRUPO INFO
+========================= */
+
+.info-group {
+  margin: 8px 0;
+}
+
+.info-group span {
+  color: #64748b !important;
+  font-style: italic !important;
+  font-size: 0.9rem !important;
+}
+
+/* =========================
+   SELECTOR DE ESTADO (BOTONES)
+========================= */
+
+.estado-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.estado-btn {
+  padding: 8px 14px;
+  border: 2px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.estado-btn.pendiente {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.estado-btn.pendiente.active,
+.estado-btn.pendiente:hover {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.estado-btn.reclamado {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.estado-btn.reclamado.active,
+.estado-btn.reclamado:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.estado-btn.entregado {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.estado-btn.entregado.active,
+.estado-btn.entregado:hover {
+  background-color: #10b981;
+  color: white;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .estado-buttons {
+    flex-direction: column;
+  }
+
+  .estado-btn {
+    width: 100%;
+  }
+
+  .reclamacion-email-row {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   SKELETON LOADER
+========================= */
+
+.item-card-skeleton {
+  height: 120px;
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  animation: pulse 1.5s ease-in-out infinite;
+  border-left: 6px solid rgba(245, 158, 11, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

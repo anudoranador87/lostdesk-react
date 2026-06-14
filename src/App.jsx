@@ -15,6 +15,8 @@ import Sidebar from "./Sidebar";
 import Filtros from "./Filtros";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
+import { Toast } from "./Toast";
+import { ToastProvider } from "./ToastContext";
 
 import { useLostItems } from "./useLostItems";
 import { RoleContext } from "./RoleContext";
@@ -22,9 +24,7 @@ import { Spinner } from "./Spinner";
 
 import "./App.css";
 
-function App() {
-
-  // ---------------- ESTADOS ----------------
+function AppContent() {
 
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
@@ -32,11 +32,7 @@ function App() {
   const [filtroNombre, setFiltroNombre] = useState("");
   const [filtroHabitacion, setFiltroHabitacion] = useState("");
 
-  // ---------------- CONTEXT ----------------
-
   const { rol } = useContext(RoleContext);
-
-  // ---------------- HOOK ----------------
 
   const {
     state,
@@ -45,8 +41,6 @@ function App() {
     handleNuevoEstado,
     spinner
   } = useLostItems();
-
-  // ---------------- FILTROS ----------------
 
   const itemsFiltrados = useMemo(() => {
     return state.filter((item) => {
@@ -70,8 +64,6 @@ function App() {
       );
     });
   }, [state, filtroNombre, filtroHabitacion, filtroEstado]);
-
-  // ---------------- RENDER ----------------
 
   return (
     <Routes>
@@ -101,6 +93,7 @@ function App() {
                       <button
                         className="btn-register-main"
                         onClick={() => setMostrarFormulario(true)}
+                        aria-label="Abrir formulario para registrar nuevo objeto"
                       >
                         <span className="icon">+</span>
                         {" "}
@@ -147,6 +140,15 @@ function App() {
       />
 
     </Routes>
+  );
+}
+
+function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+      <Toast />
+    </ToastProvider>
   );
 }
 

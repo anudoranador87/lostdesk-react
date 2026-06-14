@@ -1,11 +1,22 @@
 /* =========================
-   BASE 
+   BASE
 ========================= */
 
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* =========================
+   CONTENEDOR DE CARDS
+========================= */
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 /* =========================
@@ -116,6 +127,20 @@ html, body, #root {
    RESPONSIVE
 ========================= */
 
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+  .btn-register-main {
+    padding: 12px 24px !important;
+  }
+}
+
 @media (max-width: 768px) {
 
   .layout {
@@ -130,11 +155,27 @@ html, body, #root {
 
   .main {
     height: auto;
+    padding: 12px;
   }
 
   .btn-register-main {
     width: 100%;
     padding: 12px 20px !important;
     font-size: 0.85rem;
+  }
+
+  .cards-container {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 8px;
+  }
+
+  .btn-register-main {
+    font-size: 0.75rem;
+    padding: 10px 15px !important;
   }
 }

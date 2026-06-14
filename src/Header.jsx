@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import { RoleContext } from './RoleContext';
 import './Header.css';
 import Logo from './Logo'
-import { supabase } from './supabase'
-function Header({ totalObjetos }) { 
+
+function Header({ totalObjetos }) {
   const { rol, logOut } = useContext(RoleContext)
 
   return (
