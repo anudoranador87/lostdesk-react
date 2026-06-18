@@ -7,20 +7,21 @@ import React, {
 
 import { Routes, Route } from "react-router-dom";
 
-import Header from "./Header";
-import StatBar from "./StatBar";
-import ItemCard from "./ItemCard";
-import ItemForm from "./ItemForm";
-import Sidebar from "./Sidebar";
-import Filtros from "./Filtros";
-import Login from "./Login";
-import ProtectedRoute from "./ProtectedRoute";
-import { Toast } from "./Toast";
-import { ToastProvider } from "./ToastContext";
+import Header from "./components/Header";
+import StatBar from "./components/StatBar";
+import ItemCard from "./components/ItemCard";
+import ItemForm from "./components/ItemForm";
+import Sidebar from "./components/Sidebar";
+import Filtros from "./components/Filtros";
+import Login from "./pages/Login";
+import Panel from "./pages/Panel";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Toast } from "./components/Toast";
+import { ToastProvider } from "./context/ToastContext";
 
-import { useLostItems } from "./useLostItems";
-import { RoleContext } from "./RoleContext";
-import { Spinner } from "./Spinner";
+import { useLostItems } from "./hooks/useLostItems";
+import { RoleContext } from "./context/RoleContext";
+import { Spinner } from "./components/Spinner";
 
 import "./App.css";
 
@@ -135,6 +136,20 @@ function AppContent() {
               </div>
             </>
 
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/panel"
+        element={
+          <ProtectedRoute>
+            <div className="layout">
+              <Sidebar />
+              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+                <Panel />
+              </div>
+            </div>
           </ProtectedRoute>
         }
       />

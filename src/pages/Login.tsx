@@ -1,12 +1,12 @@
 import { useState, useContext } from "react"
-import { RoleContext } from "./RoleContext"
+import { RoleContext } from "../context/RoleContext"
 import './Login.css';
-import Logo from './Logo'
+import Logo from '../components/Logo'
 
 export default function Login() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
-  const { login } = useContext(RoleContext)
+  const { login, loginInvitado } = useContext(RoleContext)
   const [errorMsg, setErrorMsg] = useState(null)
   
   // voy a definir una funcion handleLogin para manejo de errores durante login
@@ -37,6 +37,16 @@ export default function Login() {
           >
          Confirmar
           </button>
+          
+          <button 
+              type="button" 
+              className="btn-invitado"
+              style={{ marginTop: '10px', backgroundColor: '#6c757d', color: 'white' }}
+              onClick={() => loginInvitado()}
+          >
+            Entrar como Invitado
+          </button>
+
           {errorMsg && <p className="Errores">{errorMsg}</p>}
           <div className="demo-credentials">
            <p>Credenciales de prueba:</p>

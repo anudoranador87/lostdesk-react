@@ -1,6 +1,6 @@
 
 import {createContext, useState, useEffect} from "react"
-import { supabase } from './supabase'
+import { supabase } from '../lib/supabase'
 import { useNavigate } from 'react-router-dom'
 export const RoleContext = createContext("")
 export function RoleProvider({ children }) {
@@ -38,10 +38,10 @@ const roles = {
               }
               }
              
-               
- 
-
-              
+  function loginInvitado() {
+    setRol('invitado');
+    navigate('/');
+  }
  async function restaurarSesion(){
  
   try{
@@ -88,7 +88,7 @@ async function  logOut(){
     return error
    }}
 return (
-    <RoleContext.Provider value={{rol, login, logOut, cargando}}>
+    <RoleContext.Provider value={{rol, login, loginInvitado, logOut, cargando}}>
       {children}
       
     </RoleContext.Provider>

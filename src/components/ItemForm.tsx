@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import { RoleContext } from "./RoleContext";
-import { ToastContext } from "./ToastContext";
-import { supabase } from "./supabase";
+import { RoleContext } from "../context/RoleContext";
+import { ToastContext } from "../context/ToastContext";
+import { supabase } from "../lib/supabase";
 import "./ItemForm.css";
 
 function ItemForm({ onAddItem, onClose }) {

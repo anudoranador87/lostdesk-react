@@ -1,5 +1,6 @@
-import { useEffect, useReducer, useState } from "react"
-import { supabase } from './supabase'
+import { useEffect, useReducer, useState, useContext } from "react"
+import { supabase } from '../lib/supabase'
+import { ToastContext } from '../context/ToastContext'
 
 function reducer(state, action) {
   switch(action.type) {
@@ -23,6 +24,7 @@ function reducer(state, action) {
 export function useLostItems(){
   const [state, dispatch] = useReducer(reducer, [])
   const [spinner, setSpinner] = useState(true)
+  const { addToast } = useContext(ToastContext)
 
   useEffect(() => {
     async function cargarItems() {
@@ -30,11 +32,13 @@ export function useLostItems(){
         const { data, error } = await supabase.from('objetos').select('*');
         if (error) {
           console.error(error);
+          addToast("Error al cargar los objetos", "error");
         } else {
           dispatch({ type: "LOAD_ITEMS", payload: data });
         }
       } catch (err) {
         console.error(err);
+        addToast("Error de conexión al cargar", "error");
       } finally {
         setSpinner(false)
       }
@@ -47,6 +51,7 @@ export function useLostItems(){
       const { data, error } = await supabase.from('objetos').insert(nuevoItem).select()
       if (error) {
         console.error(error);
+        addToast("Error al registrar el objeto", "error");
       } else {
         dispatch({ type: "ADD_ITEM", payload: data[0] })
         const history = { 
@@ -57,9 +62,11 @@ export function useLostItems(){
           estado_nuevo: data[0].estado,
         }
         await supabase.from('historial').insert(history)
+        addToast("Objeto registrado correctamente", "success");
       }
     } catch (err) {
       console.error(err);
+      addToast("Error de conexión al registrar", "error");
     }
   } 
 
@@ -68,6 +75,7 @@ export function useLostItems(){
       const { data, error } = await supabase.from('objetos').delete().eq('id', id)  
       if (error) {
         console.error(error);
+        addToast("Error al eliminar el objeto", "error");
       } else {
         dispatch({ type: "DELETE_ITEM", payload: id }); 
         const history = { 
@@ -78,9 +86,11 @@ export function useLostItems(){
           estado_nuevo: item.estado,
         }
         await supabase.from('historial').insert(history)
+        addToast("Objeto eliminado", "success");
       }
     } catch (err) {
       console.error(err);
+      addToast("Error de conexión al eliminar", "error");
     }
   } 
 
@@ -106,6 +116,7 @@ export function useLostItems(){
   
       if (error) {
         console.error(error);
+        addToast("Error al actualizar el estado", "error");
         return; 
       }
   
@@ -131,9 +142,11 @@ export function useLostItems(){
       };
   
       await supabase.from('historial').insert(history);
+      addToast("Estado actualizado", "success");
   
     } catch (err) {
       console.error("Error en handleNuevoEstado:", err);
+      addToast("Error de conexión al actualizar", "error");
     }
   }
 

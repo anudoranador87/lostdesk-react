@@ -2,9 +2,9 @@ import { useState, useContext } from "react"
 import './itemCard.css';
 import ModalReclamado from './ModalReclamado';
 import React from 'react'
-import { RoleContext } from './RoleContext';
-import { ToastContext } from './ToastContext';
-import { useIntersectionObserver } from './useIntersectionObserver';
+import { RoleContext } from '../context/RoleContext';
+import { ToastContext } from '../context/ToastContext';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 function ItemCard(props) {
   const { rol } = useContext(RoleContext)
