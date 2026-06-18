@@ -6,21 +6,22 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: #1f2937;
+  color: #1e293b;
   margin-bottom: 12px;
-  padding: 14px 16px;
+  padding: 18px 20px;
 
-  border-radius: 10px;
-
-  background-color: #0f1c35;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
 
   transition: all 0.25s ease;
 }
 
 /* hover limpio */
 .item-card:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* =========================
@@ -33,68 +34,52 @@
   align-items: center;
 }
 
-
-/* =========================
-   INFO GENERAL
-========================= */
-
-.card-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-
-  padding: 10px;
-  border-radius: 8px;
-
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.card-info p {
+.card-name h3 {
   margin: 0;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.card-info strong {
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 /* =========================
-   ESTADOS (SOLO FONDO + BORDE)
+   ESTADOS (FONDO + BORDE)
 ========================= */
 
 .item-card.pendiente {
   border-left: 6px solid #f59e0b;
-  background-color: rgba(245, 158, 11, 0.15);
+  background-color: #fffbeb;
 }
 
 .item-card.reclamado {
   border-left: 6px solid #3b82f6;
-  background-color: rgba(59, 130, 246, 0.15);
+  background-color: #eff6ff;
 }
 
 .item-card.entregado {
   border-left: 6px solid #10b981;
-  background-color: rgba(16, 185, 129, 0.15);
+  background-color: #ecfdf5;
 }
 
 /* =========================
-   ESTADO TEXTO (OPCIONAL)
+   ESTADO TEXTO
 ========================= */
 
 .estado-text.pendiente {
-  color: #f59e0b;
-  font-weight: bold;
+  color: #d97706;
+  font-weight: 700;
+  margin-left: 6px;
 }
 
 .estado-text.reclamado {
-  color: #3b82f6;
-  font-weight: bold;
+  color: #2563eb;
+  font-weight: 700;
+  margin-left: 6px;
 }
 
 .estado-text.entregado {
-  color: #10b981;
-  font-weight: bold;
+  color: #059669;
+  font-weight: 700;
+  margin-left: 6px;
 }
 
 /* =========================
@@ -106,28 +91,31 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-}
-
-.card-controls select {
-  background: #1a2744;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 6px;
-  border-radius: 6px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
 }
 
 /* botón borrar */
 .delete-btn {
-  background: none;
+  background: #fee2e2;
   border: none;
-  color: rgba(255,255,255,0.4);
-  font-size: 1.2rem;
+  color: #ef4444;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.2s;
 }
 
 .delete-btn:hover {
-  color: #ef4444;
+  background: #ef4444;
+  color: white;
 }
 
 /* =========================
@@ -135,25 +123,34 @@
 ========================= */
 
 .card-comment {
-  font-size: 0.75rem;
-  color: #94a3b8;
+  font-size: 0.85rem;
+  color: #64748b;
   font-style: italic;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
 }
 
 /* =========================
-   FILA BLANCA
+   FILA DE DATOS
 ========================= */
 
 .card-white-row {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .card-white-row p {
   margin: 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.card-white-row strong {
+  color: #0f172a;
+  font-weight: 600;
 }
 
 /* =========================

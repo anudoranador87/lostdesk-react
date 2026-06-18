@@ -1,57 +1,134 @@
+/* =========================
+   SIDEBAR PREMIUM
+========================= */
+
 .sidebar {
-    width: 240px;
-    height: 100vh;
-    background-color: #1a2744;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar h2 {
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #c9a84c;
+  font-weight: 800;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(135deg, #c9a84c 0%, #d4b65a 100%);
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+}
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-role {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.logout-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 12px 16px;
+    align-items: center;
   }
-  
+
   .sidebar h2 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    margin-bottom: 0;
+    margin-right: 20px;
   }
-  
+
   .sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: wrap;
   }
-  
+
   .sidebar-link {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 6px;
-    transition: 0.2s;
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
-  
-  .sidebar-link:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: #f59e0b;
-  }
-  
-  .sidebar-link.active {
-    background-color: #f59e0b;
-    color: #1a2744;
-    font-weight: bold;
-  }
-  
+
   .sidebar-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    border-top: none;
+    padding-top: 0;
+    flex-direction: row;
+    align-items: center;
   }
-  
-  .sidebar-role {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    text-transform: uppercase;
-  }
+}

@@ -35,9 +35,8 @@ html, body, #root {
 ========================= */
 
 .sidebar {
-  width: 240px;
+  width: 260px;
   flex-shrink: 0;
-  background-color: #1a2744;
   height: 100vh;
 
   position: sticky;
@@ -46,18 +45,17 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 }
-.sidebar h2 {
-  color: #ffffff;
-}
+
 /* =========================
    CONTENIDO PRINCIPAL
 ========================= */
 
 .main {
   flex: 1;
-  padding: 20px;
+  padding: 24px 32px;
+  margin-left: 260px;
 
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: auto;
 
   background-color: #f8fafc;

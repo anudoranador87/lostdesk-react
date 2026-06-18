@@ -26,7 +26,7 @@ export default function Inventario() {
             {items.length > 0 ? (
               items.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.id.split('-')[0]}</td>
+                  <td>{String(item.id).split('-')[0]}</td>
                   <td>{item.nombre}</td>
                   <td>{item.habitacion}</td>
                   <td>{item.fecha}</td>

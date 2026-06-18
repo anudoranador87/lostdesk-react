@@ -10,7 +10,7 @@ function Sidebar() {
     {
       label: "Dashboard",
       path: "/",
-      roles: ["recepcion", "housekeeping", "management"]
+      roles: ["recepcion", "housekeeping", "management", "invitado"]
     },
     {
       label: "Panel",
@@ -20,7 +20,7 @@ function Sidebar() {
     {
       label: "Inventario",
       path: "/inventario",
-      roles: ["recepcion", "housekeeping", "management"]
+      roles: ["recepcion", "housekeeping", "management", "invitado"]
     },
     {
       label: "Historial",

@@ -4,27 +4,16 @@ import './Header.css';
 import Logo from './Logo'
 
 function Header({ totalObjetos }) {
-  const { rol, logOut } = useContext(RoleContext)
+  const { rol } = useContext(RoleContext)
 
   return (
-    <>
-    
-    <div className="header-class">
-    <Logo />
-      <h1>The Palace Hotel</h1>
-      <div className="header-info">
-        
-       
-        <span className="count-badge">
-          {totalObjetos} {totalObjetos === 1 ? 'Objeto' : 'Objetos'} Registrados
-        </span>
-      </div>
-      <span className={`rol-badge rol-${rol}`}>{rol}</span>
+    <div className="header-container">
+      <h1>Lost & Found</h1>
+      <span className="header-badge">
+        {totalObjetos} {totalObjetos === 1 ? 'Objeto' : 'Objetos'}
+      </span>
     </div>
-    <button className="logout-btn" onClick={logOut}>
-      Logout
-    </button>
-    </>)
+  )
 }
 
 export default Header;

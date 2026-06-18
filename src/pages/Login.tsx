@@ -21,41 +21,42 @@ export default function Login() {
     }
   }
   return (
-  <div className="login-screen">
+  <div className="login-wrapper">
+    <div className="login-screen">
    
-    <Logo />
-    <form>
-          <input type="email" className="input-form" placeholder="email@email.com" onChange={(e)=> setEmail(e.target.value)} />
-          <input type="password" required className="input-form" placeholder="1234..." onChange={(e)=>setPassword(e.target.value)} />
-          <button 
-              type="submit" 
-              onClick={(e) => { 
-              e.preventDefault(); 
-              handleLogin(); 
-    
-             }}
-          >
-         Confirmar
-          </button>
-          
-          <button 
-              type="button" 
-              className="btn-invitado"
-              style={{ marginTop: '10px', backgroundColor: '#6c757d', color: 'white' }}
-              onClick={() => loginInvitado()}
-          >
-            Entrar como Invitado
-          </button>
+      <Logo />
+      <form>
+            <input type="email" className="input-form" placeholder="email@email.com" onChange={(e)=> setEmail(e.target.value)} />
+            <input type="password" required className="input-form" placeholder="1234..." onChange={(e)=>setPassword(e.target.value)} />
+            <button 
+                type="submit" 
+                onClick={(e) => { 
+                e.preventDefault(); 
+                handleLogin(); 
+      
+               }}
+            >
+           Confirmar
+            </button>
+            
+            <button 
+                type="button" 
+                className="btn-invitado"
+                onClick={() => loginInvitado()}
+            >
+              Entrar como Invitado
+            </button>
 
-          {errorMsg && <p className="Errores">{errorMsg}</p>}
-          <div className="demo-credentials">
-           <p>Credenciales de prueba:</p>
-           <p>recepcion@lostdesk.com / Recepcion123</p>
-           <p>housekeeping@lostdesk.com / Housekeeping123</p>
-           <p>management@lostdesk.com / Management123</p>
-</div>
-    
-    </form>
+            {errorMsg && <p className="Errores" style={{ color: '#ef4444', marginTop: '12px', fontSize: '0.9rem' }}>{errorMsg}</p>}
+            <div className="demo-credentials">
+             <p>Credenciales de prueba:</p>
+             <p>recepcion@lostdesk.com / Recepcion123</p>
+             <p>housekeeping@lostdesk.com / Housekeeping123</p>
+             <p>management@lostdesk.com / Management123</p>
+      </div>
+      
+      </form>
     </div>
+  </div>
   )
 }
