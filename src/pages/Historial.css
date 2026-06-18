@@ -1,0 +1,63 @@
+.historial-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.historial-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.historial-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.historial-table th,
+.historial-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.historial-table th {
+  background-color: #1a2744;
+  color: white;
+  font-weight: 500;
+}
+
+.historial-table tr:hover {
+  background-color: #f1f5f9;
+}
+
+.accion-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.accion-badge.registrado {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.accion-badge.estado-cambiado {
+  background-color: #fef08a;
+  color: #854d0e;
+}
+
+.accion-badge.eliminado {
+  background-color: #fee2e2;
+  color: #dc2626;
+}

@@ -15,6 +15,8 @@ import Sidebar from "./components/Sidebar";
 import Filtros from "./components/Filtros";
 import Login from "./pages/Login";
 import Panel from "./pages/Panel";
+import Historial from "./pages/Historial";
+import Inventario from "./pages/Inventario";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toast } from "./components/Toast";
 import { ToastProvider } from "./context/ToastContext";
@@ -32,6 +34,8 @@ function AppContent() {
   const [filtroEstado, setFiltroEstado] = useState("");
   const [filtroNombre, setFiltroNombre] = useState("");
   const [filtroHabitacion, setFiltroHabitacion] = useState("");
+  const [filtroFechaInicio, setFiltroFechaInicio] = useState("");
+  const [filtroFechaFin, setFiltroFechaFin] = useState("");
 
   const { rol } = useContext(RoleContext);
 
@@ -58,13 +62,23 @@ function AppContent() {
         filtroEstado === "" ||
         item.estado === filtroEstado;
 
+      let coincideFecha = true;
+      if (filtroFechaInicio && filtroFechaFin) {
+        coincideFecha = item.fecha >= filtroFechaInicio && item.fecha <= filtroFechaFin;
+      } else if (filtroFechaInicio) {
+        coincideFecha = item.fecha >= filtroFechaInicio;
+      } else if (filtroFechaFin) {
+        coincideFecha = item.fecha <= filtroFechaFin;
+      }
+
       return (
         coincideNombre &&
         coincideHabitacion &&
-        coincideEstado
+        coincideEstado &&
+        coincideFecha
       );
     });
-  }, [state, filtroNombre, filtroHabitacion, filtroEstado]);
+  }, [state, filtroNombre, filtroHabitacion, filtroEstado, filtroFechaInicio, filtroFechaFin]);
 
   return (
     <Routes>
@@ -117,6 +131,10 @@ function AppContent() {
                     setFiltroNombre={setFiltroNombre}
                     filtroHabitacion={filtroHabitacion}
                     setFiltroHabitacion={setFiltroHabitacion}
+                    filtroFechaInicio={filtroFechaInicio}
+                    setFiltroFechaInicio={setFiltroFechaInicio}
+                    filtroFechaFin={filtroFechaFin}
+                    setFiltroFechaFin={setFiltroFechaFin}
                   />
 
                   <div className="cards-container">
@@ -148,6 +166,34 @@ function AppContent() {
               <Sidebar />
               <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
                 <Panel />
+              </div>
+            </div>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/historial"
+        element={
+          <ProtectedRoute>
+            <div className="layout">
+              <Sidebar />
+              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+                <Historial />
+              </div>
+            </div>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/inventario"
+        element={
+          <ProtectedRoute>
+            <div className="layout">
+              <Sidebar />
+              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+                <Inventario />
               </div>
             </div>
           </ProtectedRoute>

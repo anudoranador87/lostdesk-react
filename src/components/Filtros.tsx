@@ -7,13 +7,19 @@ function Filtros({
   setFiltroNombre,
   filtroHabitacion,
   setFiltroHabitacion,
+  filtroFechaInicio,
+  setFiltroFechaInicio,
+  filtroFechaFin,
+  setFiltroFechaFin,
 }) {
-  const tienesFiltrosActivos = filtroEstado || filtroNombre || filtroHabitacion;
+  const tienesFiltrosActivos = filtroEstado || filtroNombre || filtroHabitacion || filtroFechaInicio || filtroFechaFin;
 
   const limpiarFiltros = () => {
     setFiltroEstado("");
     setFiltroNombre("");
     setFiltroHabitacion("");
+    setFiltroFechaInicio("");
+    setFiltroFechaFin("");
   };
 
   return (
@@ -48,6 +54,25 @@ function Filtros({
         <option value="reclamado">Reclamado</option>
         <option value="entregado">Entregado</option>
       </select>
+
+      <div className="filtro-fechas">
+        <input 
+          type="date" 
+          value={filtroFechaInicio}
+          onChange={(e) => setFiltroFechaInicio(e.target.value)}
+          className="filtro-input"
+          aria-label="Fecha inicio"
+          title="Desde"
+        />
+        <input 
+          type="date" 
+          value={filtroFechaFin}
+          onChange={(e) => setFiltroFechaFin(e.target.value)}
+          className="filtro-input"
+          aria-label="Fecha fin"
+          title="Hasta"
+        />
+      </div>
 
       {tienesFiltrosActivos && (
         <button className="btn-limpiar-filtros" onClick={limpiarFiltros} aria-label="Limpiar todos los filtros">
