@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import Panel from "./pages/Panel";
 import Historial from "./pages/Historial";
 import Inventario from "./pages/Inventario";
+import Usuarios from "./pages/Usuarios";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toast } from "./components/Toast";
 import { ToastProvider } from "./context/ToastContext";
@@ -194,6 +195,20 @@ function AppContent() {
               <Sidebar />
               <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
                 <Inventario />
+              </div>
+            </div>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/usuarios"
+        element={
+          <ProtectedRoute>
+            <div className="layout">
+              <Sidebar />
+              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+                <Usuarios />
               </div>
             </div>
           </ProtectedRoute>
