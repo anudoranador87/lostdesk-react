@@ -10,6 +10,8 @@
   align-items: center;
   z-index: 10000;
   backdrop-filter: blur(5px);
+  padding: 16px;
+  overflow-y: auto;
 }
 
 /* =========================
@@ -18,6 +20,8 @@
 .form-card {
   width: 92%;
   max-width: 360px;
+  max-height: calc(100vh - 32px);
+  overflow: hidden;
 
   background: white;
   border-radius: 14px;
@@ -70,6 +74,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
 }
 
 /* =========================
@@ -104,6 +109,11 @@
   border-radius: 8px;
   font-size: 0.85rem;
   background: #f8fafc;
+  min-width: 0;
+}
+
+.input-box textarea {
+  resize: vertical;
 }
 
 /* focus */
@@ -173,4 +183,25 @@
 .input-box textarea[aria-invalid="true"] {
   border-color: #ef4444 !important;
   background-color: #fef2f2 !important;
+}
+
+@media (max-width: 480px) {
+  .form-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .form-card {
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 20px);
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .submit-form-btn:hover:not(:disabled) {
+    transform: none;
+  }
 }

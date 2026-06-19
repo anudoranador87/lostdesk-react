@@ -9,6 +9,7 @@
   color: #1e293b;
   margin-bottom: 12px;
   padding: 18px 20px;
+  min-width: 0;
 
   border-radius: 12px;
   background-color: #ffffff;
@@ -32,6 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .card-name h3 {
@@ -39,6 +41,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
 /* =========================
@@ -94,6 +97,7 @@
   margin-top: 8px;
   padding-top: 12px;
   border-top: 1px solid #e2e8f0;
+  flex-wrap: wrap;
 }
 
 /* botón borrar */
@@ -130,6 +134,7 @@
   padding: 8px 12px;
   border-radius: 6px;
   border: 1px solid #e2e8f0;
+  overflow-wrap: anywhere;
 }
 
 /* =========================
@@ -146,6 +151,7 @@
   margin: 0;
   font-size: 0.95rem;
   color: #334155;
+  overflow-wrap: anywhere;
 }
 
 .card-white-row strong {
@@ -286,8 +292,31 @@
 ========================= */
 
 @media (max-width: 768px) {
+  .item-card {
+    padding: 14px 12px;
+    border-radius: 10px;
+  }
+
+  .item-card:hover {
+    transform: none;
+  }
+
+  .card-name {
+    align-items: flex-start;
+  }
+
+  .card-name h3 {
+    font-size: 1.05rem;
+  }
+
+  .card-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .estado-buttons {
     flex-direction: column;
+    width: 100%;
   }
 
   .estado-btn {
@@ -296,6 +325,12 @@
 
   .reclamacion-email-row {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-send-email {
+    justify-content: center !important;
+    width: 100%;
   }
 }
 

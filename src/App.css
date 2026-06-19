@@ -8,6 +8,14 @@ html, body, #root {
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* =========================
    CONTENEDOR DE CARDS
 ========================= */
@@ -25,9 +33,9 @@ html, body, #root {
 
 .layout {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -52,6 +60,7 @@ html, body, #root {
 
 .main {
   flex: 1;
+  min-width: 0;
   padding: 24px 32px;
   margin-left: 260px;
 
@@ -127,11 +136,12 @@ html, body, #root {
 
 @media (max-width: 1024px) {
   .sidebar {
-    width: 200px;
+    width: 220px;
   }
 
   .main {
-    padding: 15px;
+    margin-left: 220px;
+    padding: 20px;
   }
 
   .btn-register-main {
@@ -143,6 +153,8 @@ html, body, #root {
 
   .layout {
     flex-direction: column;
+    min-height: 100vh;
+    overflow: visible;
   }
 
   .sidebar {
@@ -152,7 +164,11 @@ html, body, #root {
   }
 
   .main {
+    width: 100%;
+    margin-left: 0;
     height: auto;
+    min-height: auto;
+    overflow: visible;
     padding: 12px;
   }
 
@@ -164,6 +180,7 @@ html, body, #root {
 
   .cards-container {
     gap: 8px;
+    margin-top: 12px;
   }
 }
 

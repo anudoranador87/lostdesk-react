@@ -3,6 +3,7 @@
   background-color: #f8f9fa;
   border-radius: 8px;
   width: 100%;
+  min-width: 0;
 }
 
 .historial-container h2 {
@@ -12,6 +13,8 @@
 
 .table-responsive {
   overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -19,6 +22,7 @@
 
 .historial-table {
   width: 100%;
+  min-width: 720px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -40,11 +44,13 @@
 }
 
 .accion-badge {
+  display: inline-block;
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.85rem;
   font-weight: bold;
   text-transform: capitalize;
+  white-space: nowrap;
 }
 
 .accion-badge.registrado {
@@ -60,4 +66,36 @@
 .accion-badge.eliminado {
   background-color: #fee2e2;
   color: #dc2626;
+}
+
+.accion-badge.pendiente {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.accion-badge.reclamado {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.accion-badge.entregado {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+@media (max-width: 768px) {
+  .historial-container {
+    padding: 12px;
+    border-radius: 0;
+  }
+
+  .historial-container h2 {
+    font-size: 1.25rem;
+  }
+
+  .historial-table th,
+  .historial-table td {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
 }
