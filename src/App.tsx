@@ -18,6 +18,7 @@ import Panel from "./pages/Panel";
 import Historial from "./pages/Historial";
 import Inventario from "./pages/Inventario";
 import Usuarios from "./pages/Usuarios";
+import PublicObjeto from "./pages/PublicObjeto";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toast } from "./components/Toast";
 import { ToastProvider } from "./context/ToastContext";
@@ -85,6 +86,7 @@ function AppContent() {
     <Routes>
 
       <Route path="/login" element={<Login />} />
+      <Route path="/objeto/:id" element={<PublicObjeto />} />
 
       <Route
         path="/"
@@ -165,7 +167,7 @@ function AppContent() {
           <ProtectedRoute>
             <div className="layout">
               <Sidebar />
-              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+              <div className="main">
                 <Panel />
               </div>
             </div>
@@ -179,7 +181,7 @@ function AppContent() {
           <ProtectedRoute>
             <div className="layout">
               <Sidebar />
-              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+              <div className="main">
                 <Historial />
               </div>
             </div>
@@ -193,7 +195,7 @@ function AppContent() {
           <ProtectedRoute>
             <div className="layout">
               <Sidebar />
-              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+              <div className="main">
                 <Inventario />
               </div>
             </div>
@@ -207,7 +209,7 @@ function AppContent() {
           <ProtectedRoute>
             <div className="layout">
               <Sidebar />
-              <div className="main" style={{ backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
+              <div className="main">
                 <Usuarios />
               </div>
             </div>

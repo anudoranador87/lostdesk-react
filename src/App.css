@@ -62,7 +62,6 @@ body {
   flex: 1;
   min-width: 0;
   padding: 24px 32px;
-  margin-left: 260px;
 
   min-height: 100vh;
   overflow-y: auto;
@@ -140,7 +139,6 @@ body {
   }
 
   .main {
-    margin-left: 220px;
     padding: 20px;
   }
 
