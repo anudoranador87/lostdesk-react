@@ -1,0 +1,159 @@
+/* =========================
+   EMAIL PREVIEW MODAL
+========================= */
+
+.email-preview-modal {
+  max-width: 520px;
+  text-align: left;
+}
+
+.email-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.email-preview-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.email-preview-header .close-x-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #94a3b8;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.email-preview-header .close-x-btn:hover {
+  color: #ef4444;
+}
+
+.email-preview-to {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 16px;
+}
+
+.email-preview-to strong {
+  color: #334155;
+}
+
+/* Email template card */
+.email-template {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.email-template-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.email-brand {
+  color: #f59e0b;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+}
+
+.email-subject {
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.email-template-body {
+  padding: 20px;
+  background: #ffffff;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.email-template-body p {
+  margin: 0 0 12px;
+}
+
+.email-detail-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+
+.email-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.email-detail-row:last-child {
+  border-bottom: none;
+}
+
+.email-detail-label {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.email-detail-value {
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.email-signature {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 8px !important;
+}
+
+.email-template-footer {
+  background: #f8fafc;
+  padding: 10px 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.email-template-footer span {
+  color: #94a3b8;
+  font-size: 0.7rem;
+}
+
+/* Actions */
+.email-preview-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.email-preview-actions .btn-secondary,
+.email-preview-actions .btn-primary {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.email-preview-actions .btn-secondary:active,
+.email-preview-actions .btn-primary:active {
+  transform: scale(0.97);
+}

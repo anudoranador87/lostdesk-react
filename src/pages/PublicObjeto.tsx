@@ -10,7 +10,7 @@ interface Objeto {
   fecha: string;
   estado: "pendiente" | "reclamado" | "entregado";
   comentario?: string;
-  imagen_url?: string;
+  foto_url?: string;
 }
 
 export default function PublicObjeto() {
@@ -105,9 +105,9 @@ export default function PublicObjeto() {
         </div>
 
         <div className="public-card-body">
-          {objeto.imagen_url && (
+          {objeto.foto_url && (
             <div className="public-image-container">
-              <img src={objeto.imagen_url} alt={objeto.nombre} className="public-item-image" />
+              <img src={objeto.foto_url} alt={objeto.nombre} className="public-item-image" />
             </div>
           )}
 

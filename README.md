@@ -2,6 +2,13 @@
 
 > Sistema de gestión de objetos perdidos para hoteles
 
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)
+![Recharts](https://img.shields.io/badge/Recharts-2.15-FF6384?logo=data:image/svg+xml;base64,&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)
+
 🌐 **Demo en producción** → [lostdesk-react-x3dk.vercel.app](https://lostdesk-react-x3dk.vercel.app/)
 
 **Credenciales de prueba:**
@@ -40,7 +47,8 @@ Esto genera mala experiencia para el huésped y fricción interna en el equipo.
 - Historial completo de cada objeto
 - Autenticación real con permisos por rol
 - QR por objeto — el huésped puede rastrear su objeto sin login
-- Notificaciones automáticas por email al encontrar un objeto
+- Vista previa interactiva de notificaciones por email
+- Dashboard con gráficas y KPIs para management
 
 ---
 
@@ -66,14 +74,14 @@ Esto genera mala experiencia para el huésped y fricción interna en el equipo.
 
 ## 🛠️ Stack tecnológico
 
-- **React + Vite** — UI y bundler
+- **React 19 + Vite 8** — UI y bundler
 - **React Router v6** — navegación por rutas reales
 - **Supabase** — base de datos PostgreSQL, autenticación y storage de imágenes
 - **Recharts** — gráficas del dashboard de management
-- **Resend / SendGrid** — notificaciones por email via Supabase Edge Functions
+- **qrcode.react** — generación de códigos QR por objeto
 - **Vercel** — deploy en producción
-- **Jest + React Testing Library** — testing
-- **TypeScript** — tipado estático
+- **Vitest + React Testing Library** — testing
+- **TypeScript 6** — tipado estático
 
 ---
 
@@ -88,6 +96,75 @@ Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquite
 
 ---
 
+## 📦 Instalación local
+
+```bash
+git clone https://github.com/anudoranador87/lostdesk-react.git
+cd lostdesk-react
+npm install
+```
+
+### Configuración de entorno
+
+Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```bash
+VITE_SUPABASE_URL=tu_supabase_url
+VITE_SUPABASE_ANON_KEY=tu_supabase_anon_key
+```
+
+> 💡 Puedes copiar `.env.example` como referencia.
+
+### Ejecutar en desarrollo
+
+```bash
+npm run dev
+```
+
+---
+
+## 🗄️ Esquema de Base de Datos (Supabase)
+
+### Tabla `objetos`
+
+```sql
+CREATE TABLE objetos (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  nombre TEXT NOT NULL,
+  habitacion TEXT NOT NULL,
+  fecha DATE NOT NULL,
+  estado TEXT NOT NULL DEFAULT 'pendiente' CHECK (estado IN ('pendiente', 'reclamado', 'entregado')),
+  comentario TEXT,
+  foto_url TEXT,
+  registrado_por TEXT NOT NULL,
+  reclamado_por TEXT,
+  email_cliente TEXT,
+  booking_cliente TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+```
+
+### Tabla `historial`
+
+```sql
+CREATE TABLE historial (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  nombre_objeto TEXT NOT NULL,
+  habitacion TEXT,
+  rol TEXT NOT NULL,
+  accion TEXT NOT NULL,
+  estado_nuevo TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+```
+
+### Storage
+
+- **Bucket**: `fotos-objetos` (público)
+- Se usa para almacenar las fotos subidas con cada objeto registrado
+
+---
+
 ## 🗺️ Roadmap completo
 
 **Completado ✅**
@@ -99,50 +176,26 @@ Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquite
 - ✅ Fase 5 — Contexto global y roles con useContext
 - ✅ Fase 6 — Lógica desacoplada con custom hooks
 - ✅ Fase 7 — Navegación con React Router
-- ✅ Fase 8 — Optimización con useMemo, useCallback y React.memo -
-- ✅Fase 9 — Supabase — CRUD completo, Auth con roles, Storage de imágenes
-- ✅Deploy — Producción en Vercel
-- ✅Historial en Supabase — registro automático de    acciones: registrado, estado cambiado, eliminado
+- ✅ Fase 8 — Optimización con useMemo, useCallback y React.memo
+- ✅ Fase 9 — Supabase — CRUD completo, Auth con roles, Storage de imágenes
+- ✅ Deploy — Producción en Vercel
+- ✅ Historial en Supabase — registro automático de acciones: registrado, estado cambiado, eliminado
+- ✅ Fase 10 — Integración Supabase completa (logout, manejo de errores, responsive)
+- ✅ Fase 11 — Filtros y búsqueda (estado, nombre, habitación, rango de fechas)
+- ✅ Fase 12 — Dashboard de management (gráficas por estado, KPI tasa de devolución, top habitaciones)
+- ✅ Fase 13 — QR por objeto (generación con qrcode.react, página pública /objeto/:id, descarga e impresión)
+- ✅ Fase 14 — Notificaciones por email (simulación interactiva con vista previa de plantilla de correo)
+- ✅ Variables de entorno — Credenciales de Supabase securizadas con `.env`
+- ✅ Fotos en tarjetas — Visualización de la imagen del objeto en las tarjetas del panel
+- ✅ Corrección de fotos en vista pública — Arreglado bug de campo `imagen_url` → `foto_url`
 
 **En desarrollo 🚧**
-
-- ✅ Fase 10 — Completar integración Supabase
-- ✅Logout con supabase.auth.signOut()
-- ✅  Manejo de errores visible al usuario
-- 🚧 Fotos verificadas en entorno local
-- ✅ Responsive para móvil
-
-- ✅ Fase 11 — Filtros y búsqueda
-- ✅Filtro por estado — pendiente, reclamado, entregado
-- 🚧Filtro por fecha — rango de fechas
-- ✅ Filtro por habitación
-- ✅Búsqueda por nombre de objeto
-- ✅useMemo para optimizar el filtrado
-
-- 🚧 Fase 12 — Dashboard de management
-  - Gráfica de objetos por estado con Recharts
-  - KPI de porcentaje de objetos encontrados
-  - Historial completo con tabla filtrable
-  - Objetos por habitación — zonas con más incidencias
-  - Solo accesible para el rol management
-
-- 🚧 Fase 13 — QR por objeto
-  - QR generado con qrcode.react por cada objeto
-  - Página pública /objeto/:id sin necesidad de login
-  - El huésped ve el estado actual de su objeto
-  - Diseño limpio orientado al usuario final
-
-- 🚧 Fase 14 — Notificaciones por email
-  - Supabase Edge Functions como backend serverless
-  - Integración con Resend o SendGrid
-  - Email automático al huésped cuando el estado cambia a encontrado
-  - Plantilla de email con datos del objeto
 
 - 🚧 Fase 15 — Testing
   - Tests unitarios del custom hook useLostItems
   - Tests de integración del formulario de registro
   - Tests de rutas protegidas por rol
-  - Jest + React Testing Library
+  - Vitest + React Testing Library
 
 - 🚧 Fase 16 — TypeScript
   - Migración progresiva de JS a TS
@@ -152,19 +205,9 @@ Este proyecto sigue una evolución progresiva desde Vanilla JS hacia una arquite
 **Futuro 🔮**
 
 - 🔮 React Native con Expo — versión móvil nativa para Android e iOS
-- 🔮 Historial de cambios por objeto — auditoría completa
+- 🔮 Notificaciones reales — Supabase Edge Functions + Resend/SendGrid
 - 🔮 Panel de administración para crear usuarios y asignar roles
-
----
-
-## 📦 Instalación local
-
-```bash
-git clone https://github.com/anudoranador87/lostdesk-react.git
-cd lostdesk-react
-npm install
-npm run dev
-```
+- 🔮 Exportación de informes a PDF/Excel
 
 ---
 

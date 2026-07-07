@@ -355,3 +355,50 @@
     opacity: 1;
   }
 }
+
+/* =========================
+   FOTO DE OBJETO
+========================= */
+
+.card-image-container {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 6px 0 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover .card-item-image {
+  transform: scale(1.04);
+}
+
+/* =========================
+   BOTÓN QR
+========================= */
+
+.qr-btn {
+  background: #eff6ff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.qr-btn:hover {
+  background: #3b82f6;
+  transform: scale(1.1);
+}

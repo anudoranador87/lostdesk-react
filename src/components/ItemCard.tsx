@@ -1,6 +1,8 @@
 import { useState, useContext } from "react"
 import './itemCard.css';
 import ModalReclamado from './ModalReclamado';
+import ModalQR from './ModalQR';
+import ModalEmailPreview from './ModalEmailPreview';
 import React from 'react'
 import { RoleContext } from '../context/RoleContext';
 import { ToastContext } from '../context/ToastContext';
@@ -10,6 +12,8 @@ function ItemCard(props) {
   const { rol } = useContext(RoleContext)
   const { addToast } = useContext(ToastContext)
   const [estaReclamado, setEstaReclamado] = useState(false)
+  const [mostrarQR, setMostrarQR] = useState(false)
+  const [mostrarEmailPreview, setMostrarEmailPreview] = useState(false)
   const [ref, isVisible] = useIntersectionObserver();
   const estados = ["pendiente", "reclamado", "entregado"];
 
@@ -34,7 +38,12 @@ function ItemCard(props) {
   };
 
   const handleEnviarEmail = () => {
-    alert(`Simulando envío de email a: ${props.email_cliente || 'No asignado'}`);
+    setMostrarEmailPreview(true);
+  };
+
+  const handleConfirmarEmail = () => {
+    setMostrarEmailPreview(false);
+    addToast(`Email enviado a ${props.email_cliente}`, "success", 3000);
   };
 
   if (!isVisible) {
@@ -46,6 +55,12 @@ function ItemCard(props) {
       <div className="card-name">
         <h3>{props.nombre}</h3>
       </div>
+
+      {props.foto_url && (
+        <div className="card-image-container">
+          <img src={props.foto_url} alt={props.nombre} className="card-item-image" loading="lazy" />
+        </div>
+      )}
 
       <div className="card-white-row">
         <p><strong>UBICACIÓN:</strong> {props.habitacion}</p>
@@ -100,6 +115,10 @@ function ItemCard(props) {
             ))}
           </div>
 
+          <button className="qr-btn" onClick={() => setMostrarQR(true)} aria-label="Ver código QR del objeto" title="Ver QR">
+            📱
+          </button>
+
           {rol === "management" && <button className="delete-btn" onClick={props.onDelete} aria-label="Eliminar objeto">✕</button>}
         </div>
       </div>
@@ -111,6 +130,25 @@ function ItemCard(props) {
           onUpdate={(id, estado, camposDelModal) => {
             props.onUpdate(id, estado, itemData, camposDelModal);
           }}
+        />
+      )}
+
+      {mostrarQR && (
+        <ModalQR
+          id={props.id}
+          nombre={props.nombre}
+          onClose={() => setMostrarQR(false)}
+        />
+      )}
+
+      {mostrarEmailPreview && props.email_cliente && (
+        <ModalEmailPreview
+          nombre={props.nombre}
+          habitacion={props.habitacion}
+          email={props.email_cliente}
+          booking={props.booking_cliente}
+          onClose={() => setMostrarEmailPreview(false)}
+          onConfirm={handleConfirmarEmail}
         />
       )}
     </section>
