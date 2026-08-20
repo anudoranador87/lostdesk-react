@@ -82,6 +82,18 @@ function AppContent() {
     });
   }, [state, filtroNombre, filtroHabitacion, filtroEstado, filtroFechaInicio, filtroFechaFin]);
 
+  const hayFiltrosActivos = Boolean(
+    filtroEstado || filtroNombre || filtroHabitacion || filtroFechaInicio || filtroFechaFin
+  );
+
+  const limpiarFiltros = () => {
+    setFiltroEstado("");
+    setFiltroNombre("");
+    setFiltroHabitacion("");
+    setFiltroFechaInicio("");
+    setFiltroFechaFin("");
+  };
+
   return (
     <Routes>
 
@@ -140,17 +152,39 @@ function AppContent() {
                     setFiltroFechaFin={setFiltroFechaFin}
                   />
 
-                  <div className="cards-container">
-
-                    {itemsFiltrados.map((item) => (
-                      <ItemCard
-                        key={item.id}
-                        {...item}
-                        onDelete={() => handleDeleteItem(item.id, item)}
-                        onUpdate={handleNuevoEstado}
-                      />
-                    ))}
-
+                  <div className="cards-container" aria-live="polite">
+                    {itemsFiltrados.length > 0 ? (
+                      itemsFiltrados.map((item) => (
+                        <ItemCard
+                          key={item.id}
+                          {...item}
+                          onDelete={() => handleDeleteItem(item.id, item)}
+                          onUpdate={handleNuevoEstado}
+                        />
+                      ))
+                    ) : (
+                      <section className="empty-state" role="status">
+                        <span className="empty-state-icon" aria-hidden="true">
+                          {state.length === 0 ? "📦" : "🔎"}
+                        </span>
+                        <h2>{state.length === 0 ? "Todavía no hay objetos registrados" : "No encontramos objetos"}</h2>
+                        <p>
+                          {state.length === 0
+                            ? "Registra el primer objeto perdido para empezar a centralizar el seguimiento."
+                            : "Prueba con otros criterios o limpia los filtros para ver todo el inventario."}
+                        </p>
+                        {state.length === 0 && (rol === "management" || rol === "recepcion") && (
+                          <button className="btn-register-main" onClick={() => setMostrarFormulario(true)}>
+                            <span className="icon" aria-hidden="true">+</span> Registrar primer objeto
+                          </button>
+                        )}
+                        {state.length > 0 && hayFiltrosActivos && (
+                          <button className="btn-limpiar-filtros" onClick={limpiarFiltros}>
+                            Limpiar filtros
+                          </button>
+                        )}
+                      </section>
+                    )}
                   </div>
 
                 </div>
